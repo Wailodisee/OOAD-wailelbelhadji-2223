@@ -22,7 +22,7 @@
         <RadioButton x:Name="rbn2" Content="Bilal" HorizontalAlignment="Left" Margin="226,228,0,0" VerticalAlignment="Top" FontSize="18"/>
         <RadioButton x:Name="rbn3" Content="Chelsey" HorizontalAlignment="Left" Margin="307,226,0,0" VerticalAlignment="Top" FontSize="18"/>
         <Button x:Name="btn1" Content="TOEVOEGEN " HorizontalAlignment="Left" Margin="248,263,0,0" VerticalAlignment="Top" FontSize="17" Height="38" Width="139" Click="btn1_Click"/>
-        <Button Content="VERWIJDEREN" HorizontalAlignment="Left" Margin="614,300,0,0" VerticalAlignment="Top" FontSize="17" Height="41" Width="133"/>
+        <Button x:Name="btnverwijd" Content="VERWIJDEREN" HorizontalAlignment="Left" Margin="614,300,0,0" VerticalAlignment="Top" FontSize="17" Height="41" Width="133" Click="btnverwijd_Click"/>
         <Button Content="TERUGZETTEN" HorizontalAlignment="Left" Margin="448,300,0,0" VerticalAlignment="Top" FontSize="17" Height="41" Width="137"/>
         <ListBox x:Name="lbx1" Margin="400,61,30,159"/>
         <Label Content="" HorizontalAlignment="Left" Margin="51,339,0,0" VerticalAlignment="Top" Height="58" Width="190"/>

@@ -48,9 +48,14 @@ namespace WpfTaken
             item.Content = txtTaak.Text + " ( deadline: " + datePicker.SelectedDate.Value.ToString("dd/MM/yyyy ;") + text;
             lbx1.Items.Add(item);
         }
-        /*private void ClearListBox()
+
+        private void btnverwijd_Click(object sender, RoutedEventArgs e)
         {
-            lbx1.Items.Clear();
-        }*/
+         lbx1.Items.Clear();
+        }
+        /*private void ClearListBox()
+{
+   lbx1.Items.Clear();
+}*/
     }
 }
