@@ -20,6 +20,7 @@ namespace WpfTaken
     /// </summary>
     public partial class MainWindow : Window
     {
+        Stack<object> items = new Stack<object>();
         public MainWindow()
         {
             InitializeComponent();
@@ -27,7 +28,7 @@ namespace WpfTaken
 
  
 
-        private void btn1_Click(object sender, RoutedEventArgs e)
+        private void Btn1_Click(object sender, RoutedEventArgs e)
         {
            
             string text = "";
@@ -49,13 +50,20 @@ namespace WpfTaken
             lbx1.Items.Add(item);
         }
 
-        private void btnverwijd_Click(object sender, RoutedEventArgs e)
+        private void Btnverwijd_Click(object sender, RoutedEventArgs e)
         {
-         lbx1.Items.Clear();
+            items.Push(lbx1.SelectedItem);
+            lbx1.Items.Remove((ListBoxItem)lbx1.SelectedItem);
+            Btnterugzetten.IsEnabled = true;
         }
-        /*private void ClearListBox()
-{
-   lbx1.Items.Clear();
-}*/
+
+        private void Btnterugzetten_Click(object sender, RoutedEventArgs e)
+        {
+            lbx1.Items.Add(items.Pop());
+            if (items.Count == 0)
+            {
+                Btnterugzetten.IsEnabled = false;
+            }
+        }
     }
 }

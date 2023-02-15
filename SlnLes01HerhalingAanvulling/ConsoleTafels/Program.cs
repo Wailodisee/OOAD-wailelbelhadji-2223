@@ -10,44 +10,59 @@ namespace ConsoleTafels
     {
         static void Main(string[] args)
         {
-            DrukTafel (4, 8);
-            DrukTafel (2, 5);
-            VraagPositiefGetal();
+            string eerstedruktafel = DrukTafel(4, 8);
+            Console.WriteLine(eerstedruktafel);
+
+            string tweededruktafel = DrukTafel(2, 5);
+            Console.WriteLine(tweededruktafel);
+
+            Console.Write("Geef een getal :  ");
+            string eerstegetal = Console.ReadLine();
+            int tweedegetal = VraagPositiefGetal(eerstegetal);
+
+            Console.Write("Geef nu een lengte :  ");
+            string eerstelengte = Console.ReadLine();
+            int tweedelengte = VraagPositiefGetal(eerstelengte);
+
+            string derdetafel = DrukTafel(tweedegetal, tweedelengte);
+            Console.WriteLine(derdetafel);
+
             Console.ReadLine();
         }
 
-        public static void DrukTafel(int cijfer, int lengte)
+        private static string DrukTafel(int cijfer, int afmeting)
         {
-            Console.WriteLine(lengte + " x " + cijfer + " tafel:");
+            string woord = $"{cijfer}x{afmeting} tafel: ";
+            woord += Environment.NewLine;
 
-            for (int i = 1; i <= lengte; i++)
+            for (int i = 1; i <= afmeting; i++)
             {
-                int terugCijfer = cijfer * i;
-                Console.WriteLine(cijfer + " x " + i + " = " + terugCijfer);
+                int uitkomst = cijfer * i;
+                woord += $"{cijfer} x {i} = {uitkomst}";
+                woord += Environment.NewLine;
             }
-            Console.WriteLine();
+
+            return woord;
         }
 
-        public static void VraagPositiefGetal()
+        private static int VraagPositiefGetal(string eerstewaarde)
         {
-            Console.Write(" Geef een getal : ");
-            int cijfer = Convert.ToInt32(Console.ReadLine());
-
-            if (cijfer <= 0)
+            int tweedewaarde = Convert.ToInt32(eerstewaarde);
+            if (tweedewaarde > 0)
             {
-                Console.Write(" Het getal moet positief zijn ! ");
-
-                VraagPositiefGetal();
+                return tweedewaarde;
             }
             else
             {
-                Console.Write(" geef de lengte : ");
-
-                int lengte = Convert.ToInt32(Console.ReadLine());
-
-                DrukTafel(cijfer, lengte);
+                while (tweedewaarde < 0)
+                {
+                    Console.Write("Het getal moet positief zijn! Geef een getal: ");
+                    eerstewaarde = Console.ReadLine();
+                    tweedewaarde = Convert.ToInt32(eerstewaarde);
+                }
+                return tweedewaarde;
             }
             Console.ReadLine();
-        }
-    }
+        }    
+    }
 }
