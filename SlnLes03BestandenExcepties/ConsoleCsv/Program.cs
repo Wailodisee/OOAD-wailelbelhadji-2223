@@ -8,46 +8,43 @@ namespace ConsoleCsv
     {
         static void Main(string[] args)
         {
-            // Arrays met spelers en verschillende spelletjes. 
-            string[] spelletjes = { "backgammon", "dammen", "schaak" };
-
-            string[] deelnemers = { "Zakaria", "Saleha", "Indra", "Ralph", "Francisco", "Marie" };
-
-            int GenereerScores = 100;
-
-            // Genereer 100 scores
-            Random rdm = new Random();
-
-            string csvFile = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\wedstrijden.csv";
-
-            using (StreamWriter write = new StreamWriter(csvFile))
             {
-                for (int i = 0; i < GenereerScores; i++)
+                string[] spellen = { "schaak" , "dammen" , "backgammon" };
+
+                string[] spelers = { "Zakaria" , "Saleha" , "Indra" , "Ralph" , "Francisco" , "Marie" };
+
+                Random rdm = new Random();
+
+                using (StreamWriter writer = new StreamWriter(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\Wedstrijden.csv"))
                 {
-                    // Selectionneer random spelers en random 
-                    string player1 = deelnemers[rdm.Next(deelnemers.Length)];
-
-                    string player2 = deelnemers[rdm.Next(deelnemers.Length)];
-
-                    while (player2 == player1)
+                    for (int i = 0; i < 100; i++)
                     {
-                        player2 = deelnemers[rdm.Next(deelnemers.Length)];
+                        string game = spellen[rdm.Next(0, spellen.Length)];
+
+                        string speler1 = spelers[rdm.Next(0, spelers.Length)];
+
+                        string speler2 = spelers[rdm.Next(0, spelers.Length)];
+
+                        while (speler1 == speler2)
+                        {
+                            speler2 = spelers[rdm.Next(0, spelers.Length)];
+                        }
+                        int scores1 = rdm.Next(0, 4);
+
+                        int scores2 = rdm.Next(0, 4);
+
+                        while (scores1 + scores2 != 3)
+
+                        {
+                            scores2 = rdm.Next(0, 4);
+                        }
+                        writer.WriteLine($"{speler1};{speler2};{game};{scores1}-{scores2};");
                     }
-
-                    Console.ReadKey();
-
-                    string spel = spelletjes[rdm.Next(spelletjes.Length)];
-
-                    int scores1 = rdm.Next(3);
-
-                    int scores2 = 2 - scores1;
-
-                    write.WriteLine($"{i + 1};{player1};{player2};{spel};{scores1}-{scores2};");
                 }
+                Console.WriteLine("bestand 'wedstrijden.csv' werd opgeslagen op het bureaublad.");
+
+                Console.ReadKey();
             }
-            // Weergeven van de writeLine
-            Console.WriteLine($"Weggeschreven naar {csvFile}");
-            Console.ReadKey();
         }
     }
 }

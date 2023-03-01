@@ -50,7 +50,7 @@ namespace WpfCopy
             MijnFile.FileName = "savedfile.txt";
             if (MijnFile.ShowDialog() == true)
             {
-                File.WriteAllText(MijnFile.FileName, "Hello World");
+                File.WriteAllText(MijnFile.FileName, "Hello world!");
                 txtDoc.Text = "";
                 lblcomDocument.Content = "Bestand is overgezet";
                 btnGo.IsEnabled = false;
