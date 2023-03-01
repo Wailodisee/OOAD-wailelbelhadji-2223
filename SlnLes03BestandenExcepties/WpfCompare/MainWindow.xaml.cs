@@ -46,21 +46,6 @@ namespace WpfCompare
             }
             Console.ReadLine();
         }
-
-        private void Kader1(string filePath)
-        {
-            List<string> aantalRegels = new List<string>();
-            using (StreamReader reader = new StreamReader(filePath))
-            {
-                string REgels;
-                while ((REgels = reader.ReadLine()) != null)
-                {
-                    aantalRegels.Add(REgels);
-                }
-            }
-            lbx1.ItemsSource = aantalRegels;
-            Console.ReadLine();
-        }
         private void Kader2(string Path)
         {
             List<string> mijnLijnen = new List<string>();
@@ -76,21 +61,34 @@ namespace WpfCompare
 
             Console.ReadLine();
         }
-
-        private void lbxbeneden1_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void Kader1(string filePath)
         {
-            string selectedFile = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "kader1", (string)lbx1.SelectedItem);
-
-            kader1(selectedFile);
-
+            List<string> aantalRegels = new List<string>();
+            using (StreamReader reader = new StreamReader(filePath))
+            {
+                string REgels;
+                while ((REgels = reader.ReadLine()) != null)
+                {
+                    aantalRegels.Add(REgels);
+                }
+            }
+            lbx1.ItemsSource = aantalRegels;
             Console.ReadLine();
         }
-
+ 
         private void lbxbeneden2_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             string selectedFile = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "kader2", (string)lbx2.SelectedItem);
 
             kader2(selectedFile);
+
+            Console.ReadLine();
+        }
+        private void lbxbeneden1_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            string selectedFile = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "kader1", (string)lbx1.SelectedItem);
+
+            kader1(selectedFile);
 
             Console.ReadLine();
         }
