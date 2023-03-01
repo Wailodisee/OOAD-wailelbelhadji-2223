@@ -12,6 +12,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfCopy", "WpfCopy\WpfCopy.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfFileInfo", "WpfFileInfo\WpfFileInfo.csproj", "{7683267C-9A97-4682-AF20-C028AAB19736}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfCompare", "WpfCompare\WpfCompare.csproj", "{AD574B00-FBCB-4C88-BDC2-941758B43C89}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleCsv", "ConsoleCsv\ConsoleCsv.csproj", "{62B0BB31-55F6-4349-9CFD-114EE58FE75E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,6 +30,14 @@ Global
 		{7683267C-9A97-4682-AF20-C028AAB19736}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7683267C-9A97-4682-AF20-C028AAB19736}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7683267C-9A97-4682-AF20-C028AAB19736}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD574B00-FBCB-4C88-BDC2-941758B43C89}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD574B00-FBCB-4C88-BDC2-941758B43C89}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD574B00-FBCB-4C88-BDC2-941758B43C89}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD574B00-FBCB-4C88-BDC2-941758B43C89}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62B0BB31-55F6-4349-9CFD-114EE58FE75E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62B0BB31-55F6-4349-9CFD-114EE58FE75E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62B0BB31-55F6-4349-9CFD-114EE58FE75E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62B0BB31-55F6-4349-9CFD-114EE58FE75E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

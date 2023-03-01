@@ -1,19 +1,8 @@
 ﻿using Microsoft.Win32;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+
 
 namespace WpfFileInfo
 {
@@ -38,12 +27,12 @@ namespace WpfFileInfo
             {
                 // user kiest een document 
                 KiesDocument = document.FileName;
-                FileInfo fi = new FileInfo(KiesDocument);
-                lblResultaten.Content = ($@"bestandnaam: {fi.Name}
-extensie: {fi.Extension}
-gemaakt op: {fi.CreationTime.ToString()}
-mapnaam: {fi.Directory.Name}
-aantal woorden: {fi.Length}
+                FileInfo information = new FileInfo(KiesDocument);
+                lblResultaten.Content = ($@"bestandsnaam: {information.Name}
+extensie: {information.Extension}
+gemaakt op: {information.CreationTime.ToString()}
+mapnaam: {information.Directory.Name}
+aantal woorden: {information.Length}
 ");
             }
         }

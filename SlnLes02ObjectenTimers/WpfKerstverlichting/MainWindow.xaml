@@ -8,5 +8,6 @@
         Title="Kerstverlichting" Height="600" Width="350">
     <Canvas x:Name="cnvTree" Width="300" Height="425">
         <Image x:Name="imgTree" Source="img/kerstboom.jpg" Height="425" Width="300"/>
+        <Button x:Name="btnLicht" Content="SWITCH ON" Canvas.Left="76" Canvas.Top="446" Height="35" Width="137" HorizontalAlignment="Left" VerticalAlignment="Center" Click="btnLicht_Click"/>
     </Canvas>
 </Window>
