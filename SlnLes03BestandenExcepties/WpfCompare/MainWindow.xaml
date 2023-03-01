@@ -7,10 +7,10 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="680">
     <Grid>
-        <Button Content="Compare!" HorizontalAlignment="Left" Margin="275,354,0,0" VerticalAlignment="Top" Height="43" Width="100"/>
-        <ListBox x:Name="lbx1" Margin="34,10,412,297">
+        <Button x:Name="btn1" Content="Compare!" HorizontalAlignment="Left" Margin="275,354,0,0" VerticalAlignment="Top" Height="43" Width="100" Click="btn1_Click"/>
+        <ListBox x:Name="lbx1" Margin="34,10,412,297" SelectionChanged="lbx1_SelectionChanged">
         </ListBox>
-        <ListBox x:Name="lbx2" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="350,10,96,297"/>
+        <ListBox x:Name="lbx2" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="350,10,96,297" SelectionChanged="lbx2_SelectionChanged"/>
         <ListBox x:Name="lbxbeneden1" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="34,154,412,102"/>
         <ListBox x:Name="lbxbeneden2" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="350,154,96,102"/>
     </Grid>

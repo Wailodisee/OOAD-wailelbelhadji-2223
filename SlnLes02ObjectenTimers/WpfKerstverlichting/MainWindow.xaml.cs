@@ -56,7 +56,7 @@ namespace WpfKerstverlichting
                     lstellipse.Add(ellipse);
                 }
             }
-            Console.ReadLine();
+            
         }
         private void GrijsWit(object sender, EventArgs e)
         {
@@ -77,7 +77,7 @@ namespace WpfKerstverlichting
 
                 element.Fill = brush;
             }
-            Console.ReadLine();
+            
         }
         private void btnLicht_Click(object sender, RoutedEventArgs e)
         {
@@ -108,7 +108,6 @@ namespace WpfKerstverlichting
 
                 buttonOFF = false;
             }
-            Console.ReadLine();
         }
         public static bool PixelIsWhite(Image img, int x, int y)
         {

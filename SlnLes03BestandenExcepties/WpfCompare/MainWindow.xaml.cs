@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace WpfCompare
 {
@@ -14,39 +15,109 @@ namespace WpfCompare
         public MainWindow()
         {
             InitializeComponent();
-
-            PopulateList(lbx1, "kader1");
-            PopulateList(lbx2, "kader2");
+            EersteMap();
+            TweedeMap();
         }
 
-        private void PopulateList(ListBox listBox, string Namefolders)
+
+        private void EersteMap()
         {
-            string Path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            string pathOfFolder = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
 
-            string aantalfolders = System.IO.Path.Combine(Path, Namefolders);
+            string folder1 = System.IO.Path.Combine(pathOfFolder, "kader1");
 
-            string[] Mijnfiles = Directory.GetFiles(aantalfolders, "*.txt");
+            string[] mijnFiles = Directory.GetFiles(folder1, "*.txt");
 
-            foreach (string NameOfFiles in Mijnfiles)
+            foreach (string fileName in mijnFiles)
             {
-                listBox.Items.Add(System.IO.Path.GetFileName(NameOfFiles));
+                lbx1.Items.Add(System.IO.Path.GetFileName(fileName));
             }
         }
 
-        private void DisplayLines(ListBox listBox, string Path)
+        private void TweedeMap()
+        {
+            string pathOfFolder = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+
+            string folder2 = System.IO.Path.Combine(pathOfFolder, "kader2");
+
+            string[] mijnFiles = Directory.GetFiles(folder2, "*.txt");
+
+            foreach (string fileName in mijnFiles)
+            {
+                lbx2.Items.Add(System.IO.Path.GetFileName(fileName));
+            }
+        }
+
+        private void Weergave1(string PathOfFile)
         {
             List<string> Regels = new List<string>();
 
-            using (StreamReader reader = new StreamReader(Path))
+            using (StreamReader reader = new StreamReader(PathOfFile))
             {
-                string MijnLines;
+                string lijnen;
 
-                while ((MijnLines = reader.ReadLine()) != null)
+                while ((lijnen = reader.ReadLine()) != null)
                 {
-                    Regels.Add(MijnLines);
+                    Regels.Add(lijnen);
                 }
             }
-            listBox.ItemsSource = Regels;
+            lbxbeneden1.ItemsSource = Regels;
+        }
+
+        private void Weergave2(string filePath)
+        {
+            List<string> Regels = new List<string>();
+
+            using (StreamReader reader = new StreamReader(filePath))
+            {
+                string MijnRegels;
+
+                while ((MijnRegels = reader.ReadLine()) != null)
+                {
+                    Regels.Add(MijnRegels);
+                }
+            }
+            lbxbeneden2.ItemsSource = Regels;
+        }
+
+        private void lbx1_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            string GekozenFile = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "kader1", (string)lbx1.SelectedItem);
+            Weergave1(GekozenFile);
+        }
+        private void lbx2_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            string GekozenFile = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "kader2", (string)lbx2.SelectedItem);
+            Weergave2(GekozenFile);
+
+        }
+
+        private void btn1_Click(object sender, RoutedEventArgs e)
+        {
+            for (int i = 0; i < lbxbeneden1.Items.Count && i < lbxbeneden2.Items.Count; i++)
+            {
+                ListBoxItem eersteItem = lbxbeneden1.ItemContainerGenerator.ContainerFromIndex(i) as ListBoxItem;
+
+                ListBoxItem tweedeItem = lbxbeneden2.ItemContainerGenerator.ContainerFromIndex(i) as ListBoxItem;
+
+                if (eersteItem != null && tweedeItem != null)
+                {
+                    string[] eersteWoord = eersteItem.Content.ToString().Split(' ');
+
+                    string[] tweedeWoord = tweedeItem.Content.ToString().Split(' ');
+
+                    for (int j = 0; j < eersteWoord.Length && j < tweedeWoord.Length; j++)
+                    {
+                        if (eersteWoord[j] != tweedeWoord[j])
+                        {
+                            eersteItem.Foreground = Brushes.Red;
+
+                            tweedeItem.Foreground = Brushes.Red;
+                        }
+                    }
+                }
+            }
         }
     }
 }
+ 
