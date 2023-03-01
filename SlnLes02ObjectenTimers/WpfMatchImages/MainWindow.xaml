@@ -58,8 +58,5 @@
         <Label x:Name="lblAntwoord" Content="" HorizontalAlignment="Left" Margin="70,267,0,0" VerticalAlignment="Top" Width="314" Height="58" FontSize="16" FontFamily="Arial Nova"/>
         <Label x:Name="lblWatch" Content="" HorizontalAlignment="Left" Margin="70,344,0,0" VerticalAlignment="Top" Width="194" Height="36" FontSize="16"/>
 
-
-
-
     </Grid>
 </Window>
