@@ -17,23 +17,31 @@ namespace WpfFileInfo
         }
 
         private void btnKiezen_Click(object sender, RoutedEventArgs e)
-        {
+        { 
             OpenFileDialog document = new OpenFileDialog();
+
             document.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+
             document.Filter = "Tekstbestanden|*.TXT;*.TEXT";
+
             string KiesDocument;
+
             bool? GekozenDocument = document.ShowDialog();
+            
             if (GekozenDocument == true)
             {
                 // user kiest een document 
                 KiesDocument = document.FileName;
+
                 FileInfo information = new FileInfo(KiesDocument);
                 lblResultaten.Content = ($@"bestandsnaam: {information.Name}
 extensie: {information.Extension}
-gemaakt op: {information.CreationTime.ToString()}
+gemaakt op: {information.CreationTime.ToString("MM/dd/yyyy")} 
 mapnaam: {information.Directory.Name}
 aantal woorden: {information.Length}
+meest voorkomende woorden:
 ");
+                Console.ReadLine();
             }
         }
     }
