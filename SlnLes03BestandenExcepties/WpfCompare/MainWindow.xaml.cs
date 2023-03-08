@@ -110,9 +110,9 @@ namespace WpfCompare
                     {
                         if (eersteWoord[j] != tweedeWoord[j])
                         {
-                            eersteItem.Foreground = Brushes.Red;
+                            eersteItem.Background = Brushes.Red;
 
-                            tweedeItem.Foreground = Brushes.Red;
+                            tweedeItem.Background = Brushes.Red;
                         }
                     }
                 }

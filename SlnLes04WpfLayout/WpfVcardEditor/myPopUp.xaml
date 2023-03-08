@@ -1,0 +1,30 @@
+﻿<Window x:Class="WpfVcardEditor.myPopUp"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfVcardEditor"
+        mc:Ignorable="d"
+        Title="myPopUp" Height="270" Width="250" ResizeMode="NoResize" WindowStyle="ToolWindow">
+    <Grid>
+        <!--RIJ DEFINIEREN-->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="70"/>
+        </Grid.RowDefinitions>
+        <!--COLUMNS DEFINIEREN-->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!--DESIGN-->
+        <Image Source="img/logoOdisee.jpg" Width="200" />
+        <Label Grid.Column="0" Grid.Row="1"  Content="Gemaakt door : Wail El Belhadji"/>
+        <Label Grid.Column="0" Grid.Row="2" Content="Vak : OOAD "/>
+        <Label Grid.Column="0" Grid.Row="3" Content="Jaar : 2022/2023"/>
+        <Button x:Name="btnClose" Grid.Column="0" Grid.Row="4" Content="AFSLUITEN" Padding="2" Margin="0,22,0,22" HorizontalAlignment="center" Click="btnClose_Click"/>
+    </Grid>
+</Window>

@@ -1,0 +1,207 @@
+﻿<Window x:Class="WpfVcardEditor.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfVcardEditor"
+        mc:Ignorable="d"
+        Title="VCARD EDITOR" Height="610" Width="500" MinWidth="500">
+    <Grid>
+        <!--ROW DEFINIEREN-->
+        
+        <Grid.RowDefinitions>
+            
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="540"/>
+            <RowDefinition Height="25"/>
+            
+        </Grid.RowDefinitions>
+        
+        <!--START DOCKPANEL-->
+
+        <DockPanel LastChildFill="False">
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="vCard">
+                    <MenuItem Header="Open..." />
+                    <MenuItem Header="Save" />
+                    <MenuItem Header="Save As..." />
+                    <Separator />
+                    <MenuItem x:Name="submenu_Exit" Header="Exit" Click="submenu_Exit_Click"/>
+                </MenuItem>
+                
+                <!--TWEEDE MENU-->
+                
+                <MenuItem Header="Help">
+                    <MenuItem x:Name="submenu_About" Header="About" Click="submenu_About_Click"/>
+                </MenuItem>
+            </Menu>
+        </DockPanel>
+
+        <DockPanel Grid.Row="1" Margin="20">
+            <Grid>
+                <TabControl>
+                    <TabItem Header="Persoonlijk" Padding="5,0,0,0" Margin="0" >
+                        <Grid Margin="15">
+                            
+                            <!--ROW DEFINIEREN-->
+                            
+                            <Grid.RowDefinitions>
+                                
+                                <RowDefinition Height="35"/>
+                                <RowDefinition Height="35"/>
+                                <RowDefinition Height="35"/>
+                                <RowDefinition Height="35"/>
+                                <RowDefinition Height="35"/>
+                                <RowDefinition Height="35"/>
+                                <RowDefinition Height="42"/>
+                                <RowDefinition Height="*"/>
+                                
+                            </Grid.RowDefinitions>
+                            
+                            <!--COLUMN DEFINIEREN-->
+                            
+                            <Grid.ColumnDefinitions>
+                                
+                                <ColumnDefinition Width="200"/>
+                                <ColumnDefinition MaxWidth="600"/>
+                                
+                            </Grid.ColumnDefinitions>
+
+                            <Label Content="Voornaam" VerticalAlignment="Center" Padding="5" FontSize="15px"/>
+                            <TextBox Grid.Column="1" Margin="2" Padding="10" VerticalAlignment="Center"/>
+                            <Label Grid.Row="1" Padding="5" Content="Achternaam" VerticalAlignment="Center" FontSize="15px"/>
+                            <TextBox Grid.Row="1" Grid.Column="1" Margin="2" Padding="10" VerticalAlignment="Center"/>
+                            <Label Grid.Row="2" Content="Geboortedatum" VerticalAlignment="Center" FontSize="15px"/>
+                            <DatePicker Grid.Column="1" Grid.Row="2" Padding="5" Margin="1"  MaxWidth="140" HorizontalAlignment="Left"/>
+                            <Label  Grid.Row="3" Content="Geslacht" FontSize="15px" VerticalAlignment="Center"/>
+                            
+                            <!--RADIOBUTTON DEFINIEREN-->
+                            
+                            <StackPanel Grid.Row="3" Grid.Column="1" Margin="5" VerticalAlignment="Center"  Orientation="Horizontal">
+                                <RadioButton Content="Vrouw" FontSize="15px"/>
+                                <RadioButton Content="Man" FontSize="15px"/>
+                                <RadioButton Content="Onbekend" FontSize="15px"/>
+                            </StackPanel>
+
+                            <Label Grid.Row="4" Content="Privé email" FontSize="15px" VerticalAlignment="Center" />
+                            <TextBox Grid.Column="1" Grid.Row="4" Margin="2" Padding="10" VerticalAlignment="Center"/>
+                            <Label Grid.Row="5" Content="Privé telefoon" FontSize="15px" VerticalAlignment="Center"/>
+                            <TextBox Grid.Column="1" Grid.Row="5" Margin="2" Padding="10" Width="210" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <Label Grid.Row="6" Content="Foto" FontSize="15px"/>
+                            
+                            <!--BUTTON + LABEL-->
+                            
+                            <StackPanel Grid.Row="6" Grid.Column="1" VerticalAlignment="Center" Orientation="Horizontal">
+                                <Button Margin="2" Padding="10" Content="SELECTEER..."/>
+                                <Label Margin="2" Padding="10" Content="( geen geselecteerd )"/>
+                            </StackPanel>
+
+                            <!--FOTOLAATSTERIJ-->
+                            
+                            <Border Grid.Column="1" Grid.Row="7"  BorderThickness="2" Height="100" Width="100" BorderBrush="Black" HorizontalAlignment="Right" VerticalAlignment="Top">
+                                <Image Height="100" Width="100" x:Name="img" HorizontalAlignment="Right" VerticalAlignment="Top"/>
+                            </Border>
+                        </Grid>
+                    </TabItem>
+                    
+                    <!--2DE TABITEM WERK-->
+                    
+                    <TabItem Header="Werk" Margin="0" Padding="5,0,0,0">
+                        <Grid Margin="15">
+                            
+                            <!--RIJ DEFINIEREN-->
+                            
+                            <Grid.RowDefinitions>
+                                
+                                <RowDefinition Height="35"/>
+                                <RowDefinition Height="35"/>
+                                <RowDefinition Height="35"/>
+                                <RowDefinition Height="35"/>
+                                
+                            </Grid.RowDefinitions>
+                            
+                            <!--COLUMN DEFINIEREN-->
+                            
+                            <Grid.ColumnDefinitions>
+                                
+                                <ColumnDefinition Width="125"/>
+                                <ColumnDefinition MaxWidth="250"/>
+                                
+                            </Grid.ColumnDefinitions>
+
+                            <!--ITEMS PLAATSEN-->
+
+                            <Label Content="Bedrijf" FontSize="15px" VerticalAlignment="Center"/>
+                            <TextBox Grid.Column="1" Padding="10" Margin="2" VerticalAlignment="Center"/>
+                            <Label Grid.Row="1" Content="Jobtitel" FontSize="15px" VerticalAlignment="Center"/>
+                            <TextBox Grid.Column="1" Grid.Row="1" Margin="2" Padding="10" VerticalAlignment="Center"/>
+                            <Label Grid.Row="2" Content="Werk email" FontSize="15px" VerticalAlignment="Center"/>
+                            <TextBox Grid.Row="2" Grid.Column="1" Padding="10" Margin="2" VerticalAlignment="Center" />
+                            <Label  Grid.Row="3" Content="Werk telefoon" FontSize="15px" VerticalAlignment="Center"/>
+                            <TextBox Grid.Column="1" Grid.Row="3" Margin="2" Padding="10" VerticalAlignment="Center"/>
+                        </Grid>
+                    </TabItem>
+                    
+                    <!--3DE TABITEM SOCIAAL-->
+
+                    <TabItem Header="Sociaal" Padding="5,0,0,0" Margin="0">
+                        <Grid Margin="15">
+                            
+                            <!--RIJ DEFINIEREN-->
+                            
+                            <Grid.RowDefinitions>
+                                
+                                <RowDefinition Height="35"/>
+                                <RowDefinition Height="35"/>
+                                <RowDefinition Height="35"/>
+                                <RowDefinition Height="35"/>
+                                
+                            </Grid.RowDefinitions>
+
+                            <!--COLUMN DEFINIEREN-->
+                            
+                            <Grid.ColumnDefinitions>
+                                
+                                <ColumnDefinition Width="125"/>
+                                <ColumnDefinition MaxWidth="250"/>
+                                
+                            </Grid.ColumnDefinitions>
+                            
+                            <!--ITEMS PLAATSEN-->
+
+                            <Label Content="LinkdIn" FontSize="15px" VerticalAlignment="Center"/> 
+                            <TextBox Grid.Column="1" Padding="10" Margin="2" VerticalAlignment="Center"/>
+                            <Label Grid.Row="1" Content="facebook" FontSize="15px" VerticalAlignment="Center"/>
+                            <TextBox Grid.Row="1" Grid.Column="1" Margin="2" Padding="10" VerticalAlignment="Center"/>
+                            <Label Grid.Row="2" Content="instagram" FontSize="15px" VerticalAlignment="Center"/>
+                            <TextBox Grid.Row="2" Grid.Column="1"  Padding="10" Margin="2" VerticalAlignment="Center" />
+                            <Label Grid.Row="3" Content="youtube" FontSize="15px" VerticalAlignment="Center"/>
+                            <TextBox Grid.Row="3" Grid.Column="1" Padding="10" Margin="2"  VerticalAlignment="Center"/>
+                        </Grid>
+                    </TabItem>
+                </TabControl>
+            </Grid>
+        </DockPanel>
+        
+        <!--DOCKPANEL BENEDEN-->
+        
+        <DockPanel Grid.Row="2">
+            <Grid>
+                
+                <!--COLUMN DEFINIEREN-->
+                
+                <Grid.ColumnDefinitions>
+                    
+                    <ColumnDefinition Width="350" />
+                    <ColumnDefinition Width="200" />
+                    
+                </Grid.ColumnDefinitions>
+                
+                <TextBlock VerticalAlignment="Center" Text="Huidige kaart: ( geen geopend )"/>
+                
+                <TextBlock VerticalAlignment="Center" Grid.Column="1" Text="Percentage ingevuld:n.a."/>
+                
+            </Grid>
+        </DockPanel>
+    </Grid>
+</Window>
