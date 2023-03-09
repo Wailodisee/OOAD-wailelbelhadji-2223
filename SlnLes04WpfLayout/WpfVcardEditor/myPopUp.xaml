@@ -22,9 +22,12 @@
 
         <!--DESIGN-->
         <Image Source="img/logoOdisee.jpg" Width="200" />
-        <Label Grid.Column="0" Grid.Row="1"  Content="Gemaakt door : Wail El Belhadji"/>
-        <Label Grid.Column="0" Grid.Row="2" Content="Vak : OOAD "/>
-        <Label Grid.Column="0" Grid.Row="3" Content="Jaar : 2022/2023"/>
+        <Label Grid.Column="0" Grid.Row="1"  Content="Gemaakt door :" FontWeight="Bold"/>
+        <Label Grid.Column="0" Grid.Row="1"  Content="     Wail El Belhadji" HorizontalAlignment="Center"/>
+        <Label Grid.Column="0" Grid.Row="2" Content="Vak :" FontWeight="Bold"/>
+        <Label Grid.Column="0" Grid.Row="2" Content="OOApplication Development " HorizontalAlignment="Center"/>
+        <Label Grid.Column="0" Grid.Row="3" Content="AcademieJaar :" FontWeight="Bold"/>
+        <Label Grid.Column="0" Grid.Row="3" Content=" 2022/2023" HorizontalAlignment="Center"/>
         <Button x:Name="btnClose" Grid.Column="0" Grid.Row="4" Content="AFSLUITEN" Padding="2" Margin="0,22,0,22" HorizontalAlignment="center" Click="btnClose_Click"/>
     </Grid>
 </Window>

@@ -68,38 +68,38 @@
                             </Grid.ColumnDefinitions>
 
                             <Label Content="Voornaam" VerticalAlignment="Center" Padding="5" FontSize="15px"/>
-                            <TextBox Grid.Column="1" Margin="2" Padding="10" VerticalAlignment="Center"/>
+                            <TextBox x:Name="txtVoornaam" Grid.Column="1" Margin="2" Padding="10" VerticalAlignment="Center"/>
                             <Label Grid.Row="1" Padding="5" Content="Achternaam" VerticalAlignment="Center" FontSize="15px"/>
-                            <TextBox Grid.Row="1" Grid.Column="1" Margin="2" Padding="10" VerticalAlignment="Center"/>
+                            <TextBox x:Name="txtAchternaam" Grid.Row="1" Grid.Column="1" Margin="2" Padding="10" VerticalAlignment="Center"/>
                             <Label Grid.Row="2" Content="Geboortedatum" VerticalAlignment="Center" FontSize="15px"/>
-                            <DatePicker Grid.Column="1" Grid.Row="2" Padding="5" Margin="1"  MaxWidth="140" HorizontalAlignment="Left"/>
+                            <DatePicker x:Name="datVerjaardag" Grid.Column="1" Grid.Row="2" Padding="5" Margin="1"  MaxWidth="140" HorizontalAlignment="Left"/>
                             <Label  Grid.Row="3" Content="Geslacht" FontSize="15px" VerticalAlignment="Center"/>
                             
                             <!--RADIOBUTTON DEFINIEREN-->
                             
                             <StackPanel Grid.Row="3" Grid.Column="1" Margin="5" VerticalAlignment="Center"  Orientation="Horizontal">
-                                <RadioButton Content="Vrouw" FontSize="15px"/>
-                                <RadioButton Content="Man" FontSize="15px"/>
-                                <RadioButton Content="Onbekend" FontSize="15px"/>
+                                <RadioButton x:Name="rbnVrouw" Content="Vrouw" FontSize="15px"/>
+                                <RadioButton x:Name="rbnMan" Content="Man" FontSize="15px"/>
+                                <RadioButton x:Name="rbnONbekend" Content="Onbekend" FontSize="15px"/>
                             </StackPanel>
 
                             <Label Grid.Row="4" Content="Privé email" FontSize="15px" VerticalAlignment="Center" />
-                            <TextBox Grid.Column="1" Grid.Row="4" Margin="2" Padding="10" VerticalAlignment="Center"/>
+                            <TextBox x:Name="txtmail" Grid.Column="1" Grid.Row="4" Margin="2" Padding="10" VerticalAlignment="Center"/>
                             <Label Grid.Row="5" Content="Privé telefoon" FontSize="15px" VerticalAlignment="Center"/>
-                            <TextBox Grid.Column="1" Grid.Row="5" Margin="2" Padding="10" Width="210" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <TextBox x:Name="txtTel" Grid.Column="1" Grid.Row="5" Margin="2" Padding="10" Width="210" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                             <Label Grid.Row="6" Content="Foto" FontSize="15px"/>
                             
                             <!--BUTTON + LABEL-->
                             
                             <StackPanel Grid.Row="6" Grid.Column="1" VerticalAlignment="Center" Orientation="Horizontal">
-                                <Button Margin="2" Padding="10" Content="SELECTEER..."/>
+                                <Button x:Name="btnSelect" Margin="2" Padding="10" Content="SELECTEER..."/>
                                 <Label Margin="2" Padding="10" Content="( geen geselecteerd )"/>
                             </StackPanel>
 
                             <!--FOTOLAATSTERIJ-->
                             
                             <Border Grid.Column="1" Grid.Row="7"  BorderThickness="2" Height="100" Width="100" BorderBrush="Black" HorizontalAlignment="Right" VerticalAlignment="Top">
-                                <Image Height="100" Width="100" x:Name="img" HorizontalAlignment="Right" VerticalAlignment="Top"/>
+                                <Image x:Name="imgAfbeelding" Height="100" Width="100" HorizontalAlignment="Right" VerticalAlignment="Top"/>
                             </Border>
                         </Grid>
                     </TabItem>
