@@ -5,29 +5,26 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfVcardEditor"
         mc:Ignorable="d"
-        Title="myPopUp" Height="270" Width="250" ResizeMode="NoResize" WindowStyle="ToolWindow">
-    <Grid>
-        <!--RIJ DEFINIEREN-->
-        <Grid.RowDefinitions>
-            <RowDefinition Height="100"/>
-            <RowDefinition Height="25"/>
-            <RowDefinition Height="25"/>
-            <RowDefinition Height="25"/>
-            <RowDefinition Height="70"/>
-        </Grid.RowDefinitions>
-        <!--COLUMNS DEFINIEREN-->
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-
-        <!--DESIGN-->
-        <Image Source="img/logoOdisee.jpg" Width="200" />
-        <Label Grid.Column="0" Grid.Row="1"  Content="Gemaakt door :" FontWeight="Bold"/>
-        <Label Grid.Column="0" Grid.Row="1"  Content="     Wail El Belhadji" HorizontalAlignment="Center"/>
-        <Label Grid.Column="0" Grid.Row="2" Content="Vak :" FontWeight="Bold"/>
-        <Label Grid.Column="0" Grid.Row="2" Content="OOApplication Development " HorizontalAlignment="Center"/>
-        <Label Grid.Column="0" Grid.Row="3" Content="AcademieJaar :" FontWeight="Bold"/>
-        <Label Grid.Column="0" Grid.Row="3" Content=" 2022/2023" HorizontalAlignment="Center"/>
-        <Button x:Name="btnClose" Grid.Column="0" Grid.Row="4" Content="AFSLUITEN" Padding="2" Margin="0,22,0,22" HorizontalAlignment="center" Click="btnClose_Click"/>
-    </Grid>
+        Title="myPopUp" Height="350" Width="300" ResizeMode="NoResize" WindowStyle="ToolWindow">
+    <StackPanel Margin="20">
+        <Image Source="img/logoOdisee.jpg" Margin="0,0,0,5"/>
+        <RichTextBox IsReadOnly="True" BorderThickness="0">
+            <FlowDocument>
+                <Paragraph LineHeight="7">
+                    <Bold>Gemaakt door:</Bold>
+                    Wail El Belhadji
+                </Paragraph>
+                <Paragraph LineHeight="7">
+                    <Bold>Vak:</Bold>
+                    OO Application Development
+                </Paragraph>
+                <Paragraph LineHeight="7">
+                    <Bold>AcademieJaar</Bold>
+                    2022/2023
+                </Paragraph>
+            </FlowDocument>
+        </RichTextBox>
+        <Button x:Name="btnSluiten" Content="SLUITEN" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="17" Padding="3" Margin="0,20,0,0" Click="btnSluiten_Click"></Button>
+    </StackPanel>
 </Window>
+
