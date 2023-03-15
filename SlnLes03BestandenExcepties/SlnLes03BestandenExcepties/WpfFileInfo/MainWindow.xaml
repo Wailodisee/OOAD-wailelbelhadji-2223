@@ -1,0 +1,14 @@
+﻿<Window x:Class="WpfFileInfo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfFileInfo"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="296" Width="372">
+    <Grid>
+        <Label x:Name="lblResultaten" Content="" HorizontalAlignment="Left" Margin="49,89,0,0" VerticalAlignment="Top" Height="152" Width="267"/>
+        <Button x:Name="btnKiezen" Content="Kies bestand..." HorizontalAlignment="Left" Margin="49,21,0,0" VerticalAlignment="Top" Height="41" Width="153" Click="btnKiezen_Click"/>
+
+    </Grid>
+</Window>

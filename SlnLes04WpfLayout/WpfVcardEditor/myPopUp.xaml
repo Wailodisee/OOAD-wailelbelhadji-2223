@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="myPopUp" Height="350" Width="300" ResizeMode="NoResize" WindowStyle="ToolWindow">
     <StackPanel Margin="20">
-        <Image Source="img/logoOdisee.jpg" Margin="0,0,0,5"/>
+        <Image Source="img/logoOdisee.png" Margin="0,0,0,5"/>
         <RichTextBox IsReadOnly="True" BorderThickness="0">
             <FlowDocument>
                 <Paragraph LineHeight="7">
@@ -20,7 +20,7 @@
                 </Paragraph>
                 <Paragraph LineHeight="7">
                     <Bold>AcademieJaar</Bold>
-                    2022/2023
+                    2022 -- 2023
                 </Paragraph>
             </FlowDocument>
         </RichTextBox>
