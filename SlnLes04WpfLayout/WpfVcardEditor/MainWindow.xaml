@@ -98,8 +98,8 @@
                         
                         <!--foto-->
                         
-                        <Border Grid.Row="7" Grid.Column="2"  Width="100" Height="100" BorderThickness="1" BorderBrush="LightGray" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="145,0,0,0">
-                            <Image x:Name="imgPersoonlijk" Width="100" Height="100" VerticalAlignment="Top" HorizontalAlignment="Right" SourceUpdated="Card_Changed"/>
+                        <Border Grid.Row="7" Grid.Column="2"  Width="100" Height="100" BorderThickness="1" BorderBrush="LightGray" VerticalAlignment="Center"  Margin="145,0,0,0">
+                            <Image x:Name="imgPersoonlijk" Width="100" Height="100" VerticalAlignment="Top"  HorizontalAlignment="Right" SourceUpdated="Card_Changed"/>
                         </Border>
                     </Grid>
 
