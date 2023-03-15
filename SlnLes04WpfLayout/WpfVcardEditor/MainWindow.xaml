@@ -18,7 +18,7 @@
                 <MenuItem x:Name="menuPersoonlijk" Header="vCard" >
                     <MenuItem x:Name="subItemNew" Header="_New" Click="subItemNew_Click"/>
                     <MenuItem x:Name="subItemOpen" Header="_Open..." Click="subItemOpen_Click"/>
-                    <MenuItem x:Name="subItemSave" Header="_Save" IsEnabled="True" Click="subItemSave_Click"/>
+                    <MenuItem x:Name="subItemSave" Header="_Save" IsEnabled="False" Click="subItemSave_Click"/>
                     <MenuItem x:Name="subItemSaveAs" Header="Save _As..." IsEnabled="True" Click="subItemSaveAs_Click"/>
                     <Separator/>
                     <MenuItem x:Name="subitemExit" Header="E_xit" Click="subItemExit_Click"/>
@@ -92,7 +92,7 @@
                         <!--stackpanel voor btn + foto-->
 
                         <StackPanel Grid.Column="2" Grid.Row="6" Orientation="Horizontal">
-                            <Button x:Name="btnselected" Content="SELECTEER..." FontSize="15" Padding="3,5,3,5" VerticalAlignment="Center"/>
+                            <Button x:Name="btnselected" Content="SELECTEER..." FontSize="15" Padding="3,5,3,5" VerticalAlignment="Center" Click="btnselected_Click"/>
                             <Label x:Name="lblselectedfoto" Content="( geen geopend )" FontSize="13" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                         </StackPanel>
                         
