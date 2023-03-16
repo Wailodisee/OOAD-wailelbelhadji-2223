@@ -356,7 +356,7 @@ namespace WpfVcardEditor
         {
             if (haschanged)
             { 
-            MessageBoxResult respons = MessageBox.Show(" Er zijn onopgelsagen wijzigingen ?","Ben je zeker?",MessageBoxButton.OKCancel);
+            MessageBoxResult respons = MessageBox.Show(" Er zijn onopgeslagen wijzigingen ?","Ben je zeker?",MessageBoxButton.OKCancel);
             if (respons == MessageBoxResult.OK)
             {
                 txtvoornaam.Text = "";
