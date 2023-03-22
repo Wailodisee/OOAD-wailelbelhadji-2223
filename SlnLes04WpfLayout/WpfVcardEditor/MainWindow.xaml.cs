@@ -359,28 +359,13 @@ namespace WpfVcardEditor
             MessageBoxResult respons = MessageBox.Show(" Er zijn onopgeslagen wijzigingen ?","Ben je zeker?",MessageBoxButton.OKCancel);
             if (respons == MessageBoxResult.OK)
             {
-                txtvoornaam.Text = "";
-                txtachternaam.Text = "";
-                dtgeboorte.SelectedDate = null;
-                rbnman.IsChecked = false;
-                rbnvrouw.IsChecked = false;
-                rbnonbekend.IsChecked = false;
-                txtmail.Text = "";
-                txttel.Text = "";
-                imgPersoonlijk.Source = null;
+               ResetForm();
             }
+
             }   
             else
             {
-                txtvoornaam.Text = "";
-                txtachternaam.Text = "";
-                dtgeboorte.SelectedDate = null;
-                rbnman.IsChecked = false;
-                rbnvrouw.IsChecked = false;
-                rbnonbekend.IsChecked = false;
-                txtmail.Text = "";
-                txttel.Text = "";
-                imgPersoonlijk.Source = null;
+                ResetForm();
             }
         }
 
@@ -397,6 +382,18 @@ namespace WpfVcardEditor
                 imgPersoonlijk.Source = image;
                 lblselectedfoto.Content = selectedFile;
             }
+        }
+        private void ResetForm()
+        {
+            txtvoornaam.Text = "";
+            txtachternaam.Text = "";
+            dtgeboorte.SelectedDate = null;
+            rbnman.IsChecked = false;
+            rbnvrouw.IsChecked = false;
+            rbnonbekend.IsChecked = false;
+            txtmail.Text = "";
+            txttel.Text = "";
+            imgPersoonlijk.Source = null;
         }
     }
 }
