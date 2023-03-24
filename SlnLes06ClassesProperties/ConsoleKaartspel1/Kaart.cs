@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace ConsoleKaartspel1
 {
@@ -38,23 +39,13 @@ namespace ConsoleKaartspel1
             get { return _mijnWaarde; } //get set structuur
             set
             {
-                int correctAntwoorden = 0;
-
                 string[] mijnList = new string[] { "C", "S", "H", "D" };
 
-                for (int i = 0; i < mijnList.Length; i++)
+                if (!mijnList.Contains(value))
                 {
-                    correctAntwoorden += mijnList[i] == value ? 1 : 0;
+                  throw new ArgumentOutOfRangeException("Kies nu een waarde tussen : c, s, h of d");
                 }
-
-                if (correctAntwoorden == 0)
-                {
-                    throw new ArgumentOutOfRangeException("Kies nu een waarde tussen : c, s, h of d");
-                }
-                else
-                {
-                    _mijnWaarde = value;
-                }
+                _mijnWaarde = value;
             }
         }
     }

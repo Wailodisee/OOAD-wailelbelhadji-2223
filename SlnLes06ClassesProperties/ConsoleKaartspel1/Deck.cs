@@ -12,7 +12,7 @@ namespace ConsoleKaartspel1
         //constructor maken
         public Deck()
         {
-            for (int i = 1; i < 13; i++) //for om kaarten te vullen
+            for (int i = 1; i <= 13; i++) //for om kaarten te vullen
             {
                 Kaart.Add(new Kaart(i, "C")); //kaart D toevoegen
 
