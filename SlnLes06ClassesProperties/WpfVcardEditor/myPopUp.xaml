@@ -1,0 +1,30 @@
+﻿<Window x:Class="WpfVcardEditor.myPopUp"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfVcardEditor"
+        mc:Ignorable="d"
+        Title="myPopUp" Height="350" Width="300" ResizeMode="NoResize" WindowStyle="ToolWindow">
+    <StackPanel Margin="20">
+        <Image Source="img/logoOdisee.png" Margin="0,0,0,5"/>
+        <RichTextBox IsReadOnly="True" BorderThickness="0">
+            <FlowDocument>
+                <Paragraph LineHeight="7">
+                    <Bold>Gemaakt door:</Bold>
+                    Wail El Belhadji
+                </Paragraph>
+                <Paragraph LineHeight="7">
+                    <Bold>Vak:</Bold>
+                    OO Application Development
+                </Paragraph>
+                <Paragraph LineHeight="7">
+                    <Bold>AcademieJaar</Bold>
+                    2022 -- 2023
+                </Paragraph>
+            </FlowDocument>
+        </RichTextBox>
+        <Button x:Name="btnSluiten" Content="SLUITEN" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="17" Padding="3" Margin="0,20,0,0" Click="btnSluiten_Click"></Button>
+    </StackPanel>
+</Window>
+
