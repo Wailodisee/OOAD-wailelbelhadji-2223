@@ -20,12 +20,17 @@ namespace ConsoleVeiling
         public Item(string naam, int minPrijs)
         {
             Naam = naam;
+
             lastPrijs = false;
+
             Verkocht = false;
+
             EersteKoper = null;
+
             AllBod = new List<Bod>();
         }
         /*Nieuwe Bod maken*/
+
         public void ToevoegenBod(Bod mijnBoden)
         {
             if (lastPrijs)
@@ -40,6 +45,7 @@ namespace ConsoleVeiling
         }
 
         /*methode Winner van het bod*/
+
         private Koper WinnerBod()
         {
             if (AllBod.Count == 0)
@@ -58,6 +64,7 @@ namespace ConsoleVeiling
         }
 
         /*Veiling afsluiten*/
+
         public void VeilingToe()
         {
             if (lastPrijs)
@@ -65,9 +72,12 @@ namespace ConsoleVeiling
                 Console.WriteLine("De veiling werd net afgesloten :(");
             }
             lastPrijs = true;
+
             EersteKoper = WinnerBod();
+
             EersteKoper.NewItem(this);
+
             Verkocht = true;
         }
     }
-    }
+}
