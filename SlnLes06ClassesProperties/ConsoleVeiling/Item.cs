@@ -15,8 +15,8 @@ namespace ConsoleVeiling
         public bool lastPrijs { get; set; }
         public bool Verkocht { get; set; }
 
-        // constructor
-        public Item() { }
+        // constructor */
+        
         public Item(string naam, int minPrijs)
         {
             Naam = naam;
@@ -25,8 +25,8 @@ namespace ConsoleVeiling
             EersteKoper = null;
             AllBod = new List<Bod>();
         }
-
-        public void NieuweBod(Bod mijnBoden)
+        /*Nieuwe Bod maken*/
+        public void ToevoegenBod(Bod mijnBoden)
         {
             if (lastPrijs)
             {
@@ -39,27 +39,30 @@ namespace ConsoleVeiling
             AllBod.Add(mijnBoden);
         }
 
+        /*methode Winner van het bod*/
         private Koper WinnerBod()
         {
             if (AllBod.Count == 0)
             {
                 Console.WriteLine("Er zijn geen biedingen gedaan.");
             }
-            Bod prijs = AllBod[0];
-            foreach (Bod b in AllBod)
+            Bod Prijs = AllBod[0];
+            foreach (Bod boden in AllBod)
             {
-                if (prijs.Bedrag < b.Bedrag)
+                if (Prijs.Bedrag < boden.Bedrag)
                 {
-                    prijs = b;
+                    Prijs = boden;
                 }
             }
-            return prijs.Koper;
+            return Prijs.Koper;
         }
-        public void GeslotenVeiling()
+
+        /*Veiling afsluiten*/
+        public void VeilingToe()
         {
             if (lastPrijs)
             {
-                Console.WriteLine("Error: De veiling is nu toe.");
+                Console.WriteLine("De veiling werd net afgesloten :(");
             }
             lastPrijs = true;
             EersteKoper = WinnerBod();

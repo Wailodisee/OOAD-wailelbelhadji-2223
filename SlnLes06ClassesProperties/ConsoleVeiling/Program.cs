@@ -22,11 +22,11 @@ namespace ConsoleVeiling
 
             try
             {
-                Komputer.NieuweBod(new Bod(eersteKoper, 880));
+                Komputer.ToevoegenBod(new Bod(eersteKoper, 880));
 
-                Komputer.NieuweBod(new Bod(tweedeKoper, 900));
+                Komputer.ToevoegenBod(new Bod(tweedeKoper, 900));
 
-                Komputer.NieuweBod(new Bod(derdeKoper, 910));
+                Komputer.ToevoegenBod(new Bod(derdeKoper, 910));
 
 
                 Console.WriteLine();
@@ -44,13 +44,13 @@ namespace ConsoleVeiling
 
                 Thread.Sleep(60000);
 
-                Komputer.GeslotenVeiling();
+                Komputer.VeilingToe();
 
-                Bod Bodwinnen = Komputer.AllBod.OrderByDescending(boden => boden.Bedrag).FirstOrDefault();
+                Bod HoogsteBod = Komputer.AllBod.OrderByDescending(boden => boden.Bedrag).FirstOrDefault();
 
-                if (Bodwinnen != null)
+                if (HoogsteBod != null)
                 {
-                    Console.WriteLine($"Het item: {Komputer.Naam} word gewonnen door: {Bodwinnen.Koper.mijnNaam} met een prijs van {Bodwinnen.Bedrag} euro.");
+                    Console.WriteLine($"Het item: {Komputer.Naam} word gewonnen door: {HoogsteBod.Koper.mijnNaam} met een prijs van {HoogsteBod.Bedrag} euro.");
                 }
                 else
                 {
@@ -65,11 +65,11 @@ namespace ConsoleVeiling
 
             try
             {
-                Auto.NieuweBod(new Bod(eersteKoper, 25000));
+                Auto.ToevoegenBod(new Bod(eersteKoper, 25000));
 
-                Auto.NieuweBod(new Bod(tweedeKoper, 26000));
+                Auto.ToevoegenBod(new Bod(tweedeKoper, 26000));
 
-                Auto.NieuweBod(new Bod(derdeKoper, 30000));
+                Auto.ToevoegenBod(new Bod(derdeKoper, 30000));
 
                 Console.WriteLine();
 
@@ -86,10 +86,13 @@ namespace ConsoleVeiling
 
                 Thread.Sleep(60000);
 
-                Auto.GeslotenVeiling();
+                Auto.VeilingToe();
 
                 Console.WriteLine($"Het item:{Auto.Naam} word gewonnen door: {Auto.EersteKoper.mijnNaam} met een prijs van: {Auto.AllBod[Auto.AllBod.Count - 1].Bedrag} euro.");
             }
+
+            /*catch declareren*/
+
             catch (Exception )
             {
                 Console.WriteLine("Een fout is opgetreden");
@@ -113,15 +116,15 @@ namespace ConsoleVeiling
             Console.ReadLine();
         }
 
-        static void ToonItems(Item i)
+        static void ToonItems(Item NewItem)
         {
-            if (i.Verkocht)
+            if (NewItem.Verkocht)
             {
-                Console.WriteLine($"Het item: -{i.Naam}- werd gewonnen door: {i.EersteKoper.mijnNaam} voor {i.AllBod[i.AllBod.Count - 1].Bedrag} euro.");
+                Console.WriteLine($"Het item: -{NewItem.Naam}- werd gewonnen door: {NewItem.EersteKoper.mijnNaam} voor {NewItem.AllBod[NewItem.AllBod.Count - 1].Bedrag} euro.");
             }
             else
             {
-                Console.WriteLine($"Het item: *{i.Naam}* heeft geen koper.");
+                Console.WriteLine($"Het item: *{NewItem.Naam}* heeft geen koper.");
             }
         }
 

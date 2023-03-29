@@ -12,14 +12,14 @@ namespace ConsoleVeiling
 
         public List<Item> BodItem { get; set; }
 
-        // constructor
+        // constructor aanameken */
         public Koper(string Naam)
         {
             mijnNaam = Naam;
 
             BodItem = new List<Item>();
         }
-        /*Item toevoegen*/
+        /* Item toevoegen */
         public void NewItem(Item Items)
         {
             BodItem.Add(Items);
