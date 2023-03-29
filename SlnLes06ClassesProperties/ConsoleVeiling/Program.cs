@@ -76,6 +76,7 @@ namespace ConsoleVeiling
                 Console.WriteLine($"Geen biedingen mogelijk voor dit item:{Auto.Naam}");
 
                 foreach (var boden in Auto.AllBod)
+
                 {
                     Console.WriteLine($"{boden.Koper.mijnNaam} heeft een totaal van {boden.Bedrag} geboden.");
                 }
