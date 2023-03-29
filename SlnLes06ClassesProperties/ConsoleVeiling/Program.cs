@@ -38,11 +38,11 @@ namespace ConsoleVeiling
                     Console.WriteLine($"{mijnBod.Koper.mijnNaam} heeft een totaal van  {mijnBod.Bedrag} euro geboden.");
                 }
 
-                Console.WriteLine("binnen 30 seconden is het veiling klaar.");
+                Console.WriteLine("binnen een aantal seconden is het veiling klaar.");
 
                 /*timer declareren*/
 
-                Thread.Sleep(30000);
+                Thread.Sleep(3000);
 
                 Komputer.VeilingToe();
 
@@ -83,9 +83,9 @@ namespace ConsoleVeiling
 
                 /*tweede timer declareren*/
 
-                Console.WriteLine("binnen 30 seconden is het veiling klaar.");
+                Console.WriteLine("binnen een aantal seconden is het veiling klaar.");
 
-                Thread.Sleep(30000);
+                Thread.Sleep(3000);
 
                 Auto.VeilingToe();
 
