@@ -45,140 +45,33 @@ namespace WpfVcardEditor
         /* Open genereren */
         private void subItemOpen_Click(object sender, RoutedEventArgs e)
         {
+            string folderPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.InitialDirectory = folderPath;
+            ofd.Filter = "Fichiers vCard (*.vcf)|*.vcf";
+
+            if (ofd.ShowDialog() == true)
+            {
+                string filePath = ofd.FileName;
+
+                statusbar1.Text = $"Huidige kaart: {filePath}";
+
+                Vcard card = ReadVcardFromFile(filePath);
+
+                ShowVcard(card);
+            }
             subItemSave.IsEnabled = true;
-            try
-            {
-                OpenFileDialog openFileDialog = new OpenFileDialog();
-                openFileDialog.Filter = "tekstbestand (*.vcf)|*.vcf";
-                if (openFileDialog.ShowDialog() == true)
-                {
-                    
 
-                    
-                    string filePath = openFileDialog.FileName;
-
-                    statusbar1.Content = $"Huidige kaart: {filePath}";
-
-                    string[] vcffile = File.ReadAllLines(openFileDialog.FileName);
-                    
-                    Vcard card = ReadVcardFromFile(filePath);
-                    ShowVcard(card);
-
-                    string voornaam = "";
-                    string achternaam = "";
-                    string email = "";
-                    string telefoon = "";
-                    string jobtitel = "";
-                    string bedrijf = "";
-                    string emailwerk = "";
-
-                    foreach (string vcfregel in vcffile)
-                    {
-                        if (vcfregel.StartsWith("N;"))
-                        {
-                            string[] parts = vcfregel.Split(';', ':');
-                            voornaam = parts[3];
-                            achternaam = parts[2];
-                        }
-                        else if (vcfregel.StartsWith("EMAIL;CHARSET=UTF-8;type=HOME"))
-                        {
-                            string[] parts = vcfregel.Split(':', ';');
-                            email = parts[3];
-                        }
-                        else if (vcfregel.StartsWith("TEL;"))
-                        {
-                            telefoon = vcfregel.Substring(vcfregel.IndexOf(":") + 1);
-                        }
-                        else if (vcfregel.StartsWith("BDAY"))
-                        {
-                            string[] parts = vcfregel.Split(':', ';');
-                            string geboortedatum = parts[1];
-                            DateTime datum;
-                            if (DateTime.TryParseExact(geboortedatum, "yyyyMMdd", CultureInfo.InvariantCulture, DateTimeStyles.None, out datum))
-                            {
-                                dtgeboorte.SelectedDate = datum;
-                            }
-                        }
-                        else if (vcfregel.StartsWith("GENDER"))
-                        {
-                            string[] parts = vcfregel.Split(':', ';');
-                            string rbngeslacht = parts[1];
-                            if (rbngeslacht == "M")
-                            {
-                                rbnman.IsChecked = true;
-                            }
-                            else if (rbngeslacht == "O")
-                            {
-                                rbnonbekend.IsChecked = true;
-                            }
-                            else if (rbngeslacht == "F")
-                            {
-                                rbnvrouw.IsChecked = true;
-                            }
-                        }
-                        else if (vcfregel.StartsWith("TITLE;"))
-                        {
-                            jobtitel = vcfregel.Substring(vcfregel.IndexOf(":") + 1);
-                        }
-                        else if (vcfregel.StartsWith("ORG;"))
-                        {
-                            bedrijf = vcfregel.Substring(vcfregel.IndexOf(":") + 1);
-                        }
-                        else if (vcfregel.StartsWith("EMAIL;CHARSET=UTF-8;type=WORK"))
-                        {
-                            string[] parts = vcfregel.Split(':', ';');
-                            emailwerk = parts[3];
-                        }
-                        else if (vcfregel.StartsWith("PHOTO;"))
-                        {
-                            string[] parts = vcfregel.Split(';', ':');
-                            string type = parts[2];
-                            string data = parts[3];
-                            byte[] imageBytes = Convert.FromBase64String(data);
-                            using (MemoryStream ms = new MemoryStream(imageBytes))
-                            {
-                                BitmapImage bitmap = new BitmapImage();
-                                bitmap.BeginInit();
-                                bitmap.StreamSource = ms;
-                                bitmap.CacheOption = BitmapCacheOption.OnLoad;
-                                bitmap.EndInit();
-                                imgPersoonlijk.Source = bitmap;
-                            }
-                        }
-                    }
-
-                    // txtboxen invullen
-                    txtvoornaam.Text = voornaam;
-                    txtachternaam.Text = achternaam;
-                    txtmail.Text = email;
-                    txttel.Text = telefoon;
-                    txtjobtitel.Text = jobtitel;
-                    txtbedrijf.Text = bedrijf;
-                    txtwerkmail.Text = emailwerk;
-                }
-            }
-            catch (FileNotFoundException)
-            {
-                MessageBox.Show($"Het bestand {SaveFilePath}kan niet gevonden worden.", "FOUT", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-            catch (UnauthorizedAccessException)
-            {
-                MessageBox.Show("U hebt geen acces tot dit bestand", "FOUT", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
         }
 
         private Vcard ReadVcardFromFile(string filepath)
         { 
             Vcard card = new Vcard();
 
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "tekstbestand (*.vcf)|*.vcf";
-            string filePath = openFileDialog.FileName;
+            string[] vcffile = File.ReadAllLines(filepath);
 
-            statusbar1.Content = $"Huidige kaart: {filePath}";
+            statusbar1.Text = $"Huidige kaart: {filepath}";
 
-            string[] vcffile = File.ReadAllLines(openFileDialog.FileName);
-           
 
             foreach (string vcfregel in vcffile)
             {
@@ -237,7 +130,9 @@ namespace WpfVcardEditor
                     string[] parts = vcfregel.Split(':', ';');
                     card.WerkEmail = parts[3];
                 }
+                   
             }
+               return card; 
         }
         private void ShowVcard(Vcard card)
         {
@@ -264,10 +159,41 @@ namespace WpfVcardEditor
             txtwerktel.Text = card.WerkTelefoon;
         }
 
+        private Vcard ToVcard()
+        {
+            Vcard card = new Vcard();
+            card.voornaam = txtvoornaam.Text;
+            card.achternaam = txtachternaam.Text;
+            card.DatumPicker = dtgeboorte.SelectedDate ?? DateTime.MinValue;
+
+           
+            if (rbnman.IsChecked == true)
+            {
+                card.gender = 'F';
+            }
+            else if (rbnman.IsChecked == true)
+            {
+                card.gender = 'M';
+            }
+           
+            else if (rbnonbekend.IsChecked == true)
+            {
+                card.gender = 'O';
+            }
+            card.priveEmail = txtmail.Text;
+            card.priveTelefoon = txttel.Text;
+            card.bedrijf = txtbedrijf.Text;
+            card.JobTitel = txtjobtitel.Text;
+            card.WerkEmail = txtwerkmail.Text;
+            card.WerkTelefoon = txtwerktel.Text;
+            return card;
+        }
+
 
         private void subItemSave_Click(object sender, RoutedEventArgs e)
         {
             try
+
             {
                 if (SaveFilePath == "")
                 {
@@ -334,70 +260,10 @@ namespace WpfVcardEditor
 
         private void vCardOpslaan(string filePath)
         {
-            try { 
             using (StreamWriter writer = new StreamWriter(filePath))
             {
-
-                writer.WriteLine("BEGIN:VCARD\r\nVERSION:3.0");
-                if (txtachternaam.Text != "")
-                {
-                    writer.Write($"N;CHARSET=UTF-8:{txtachternaam.Text};");
-                }
-                if (txtvoornaam.Text != "")
-                {
-                    writer.Write($"{txtvoornaam.Text};");
-                }
-                writer.WriteLine(";;");
-
-                if (rbnman.IsChecked.Value)
-                {
-                    writer.WriteLine("GENDER:M");
-                }
-                if (rbnvrouw.IsChecked.Value)
-                {
-                    writer.WriteLine("GENDER:F");
-                }
-                if (rbnonbekend.IsChecked.Value)
-                {
-                    writer.WriteLine("GENDER:O");
-                }
-                if (dtgeboorte.SelectedDate != null)
-                {
-                    writer.WriteLine($"BDAY:{dtgeboorte.SelectedDate.Value.ToString("yyyyMMdd")}");
-                }
-                if (txtmail.Text != "")
-                {
-                    writer.WriteLine($"EMAIL;CHARSET=UTF-8;type=HOME,INTERNET:{txtmail.Text}");
-                }
-                if (txtwerkmail.Text != "")
-                {
-                    writer.WriteLine($"EMAIL;CHARSET=UTF-8;type=WORK,INTERNET:{txtwerkmail.Text}");
-                }
-                if (imgPersoonlijk.Source != null)
-                {
-                    MemoryStream memoryStream = new MemoryStream();
-                    JpegBitmapEncoder jpegBitmapEncoder = new JpegBitmapEncoder();
-                    BitmapFrame bitmapFrame = BitmapFrame.Create((BitmapImage)imgPersoonlijk.Source);
-                    jpegBitmapEncoder.Frames.Add(bitmapFrame);
-                    jpegBitmapEncoder.Save(memoryStream);
-                    writer.WriteLine($"PHOTO;ENCODING=b;TYPE=JPEG:{Convert.ToBase64String(memoryStream.ToArray())}");
-                }
-                if (txttel.Text != "")
-                {
-                    writer.WriteLine($"TEL;TYPE=CELL:{txttel.Text}");
-                }
-                writer.WriteLine("END:VCARD");
-                MessageBox.Show("Document werd goed opgeslagen");
-              }
-            }
-
-            catch (IOException)
-            {
-                MessageBox.Show("Een fout nam plaats tijdens het opslaan van het bestand.", "FOUT", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Een onbekende fout is opgetreden: " + ex.Message, "FOUT", MessageBoxButton.OK, MessageBoxImage.Error);
+                Vcard card = ToVcard();
+                File.WriteAllText(filePath, card.GenerateVcardCode());
             }
         }
 

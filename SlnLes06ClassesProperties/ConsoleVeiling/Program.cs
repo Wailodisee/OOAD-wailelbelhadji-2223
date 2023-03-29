@@ -98,25 +98,38 @@ namespace ConsoleVeiling
             {
                 Console.WriteLine("Een fout is opgetreden");
             }
-            Console.WriteLine();
 
-            ToonItems(Komputer);
 
-            ToonItems(Auto);
+            try
+            {
+                Console.WriteLine();
 
-            Console.WriteLine();
+                ToonItems(Komputer);
 
-            ToonWinnaars(tweedeKoper);
+                ToonItems(Auto);
 
-            Console.WriteLine();
+                Console.WriteLine();
 
-            ToonWinnaars(eersteKoper);
+                ToonWinnaars(tweedeKoper);
 
-            Console.WriteLine();
+                Console.WriteLine();
 
-            ToonWinnaars(derdeKoper);
+                ToonWinnaars(eersteKoper);
 
-            Console.WriteLine();
+                Console.WriteLine();
+
+                ToonWinnaars(derdeKoper);
+
+                Console.WriteLine();
+
+                Console.ReadLine();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Een fout is opgetreden:" + ex.Message);
+            }
+
+
 
             Console.ReadLine();
         }
@@ -143,9 +156,9 @@ namespace ConsoleVeiling
 
             Console.WriteLine($"{mijnKoper.mijnNaam} bevat de volgende items:");
 
-            for (int i = 0; i < mijnKoper.BodItem.Count; i++)
+            for (int prijs = 0; prijs < mijnKoper.BodItem.Count; prijs++)
             {
-                Console.WriteLine($"{i + 1}. {mijnKoper.BodItem[i].Naam}");
+                Console.WriteLine($"{prijs + 1}. {mijnKoper.BodItem[prijs].Naam}");
             }
             Console.WriteLine();
         }

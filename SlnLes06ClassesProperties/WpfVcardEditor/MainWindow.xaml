@@ -32,7 +32,14 @@
             <!--Statusbar declareren-->
 
             <StatusBar DockPanel.Dock="Bottom">
-                <StatusBarItem x:Name="statusbar1" Content="Huidige kaart: ( geen geopend )" FontSize="12" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                
+                <StatusBar  x:Name="mijnStatusbar">
+                    
+                    <StatusBarItem>
+                        <TextBlock x:Name="statusbar1"  Text="huidige kaart:(geen geopend)"></TextBlock>
+                    </StatusBarItem>
+                        
+                </StatusBar>
                 <StatusBarItem Content="Percentage ingevuld: n.a." FontSize="12" HorizontalAlignment="Right" VerticalAlignment="Center"/>
             </StatusBar>
 
