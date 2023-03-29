@@ -102,21 +102,25 @@ namespace ConsoleVeiling
 
             ToonItems(Komputer);
 
-            Console.WriteLine();
-
             ToonItems(Auto);
 
             Console.WriteLine();
 
             ToonWinnaars(tweedeKoper);
 
+            Console.WriteLine();
+
             ToonWinnaars(eersteKoper);
+
+            Console.WriteLine();
 
             ToonWinnaars(derdeKoper);
 
+            Console.WriteLine();
+
             Console.ReadLine();
         }
-
+        
         static void ToonItems(Item NewItem)
         {
             if (NewItem.Verkocht)
