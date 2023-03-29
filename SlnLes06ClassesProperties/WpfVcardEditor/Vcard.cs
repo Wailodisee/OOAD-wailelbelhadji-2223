@@ -72,9 +72,12 @@ namespace WpfVcardEditor
             return content;
         }
 
-        // Constructors 
+        // Lege constructor 
 
-        public Vcard() { }
+        public Vcard()
+        {
+
+        }
 
         public Vcard(string voornaamV, string achternaamV, DateTime datumV, char genderV, string privemailV, string privetelefoonV, string bedrijfV, string jobitelV, string werkmailV, string werktelV)
         {
