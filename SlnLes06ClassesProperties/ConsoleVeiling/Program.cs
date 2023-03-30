@@ -134,18 +134,6 @@ namespace ConsoleVeiling
             Console.ReadLine();
         }
         
-        static void ToonItems(Item NewItem)
-        {
-            if (NewItem.Verkocht)
-            {
-                Console.WriteLine($"Het item: *{NewItem.Naam}* werd gewonnen door: {NewItem.EersteKoper.mijnNaam} voor {NewItem.AllBod[NewItem.AllBod.Count - 1].Bedrag} euro.");
-            }
-            else
-            {
-                Console.WriteLine($"Het item: *{NewItem.Naam}* heeft geen koper.");
-            }
-        }
-
         static void ToonWinnaars(Koper mijnKoper)
         {
             if (mijnKoper.BodItem.Count == 0)
@@ -161,6 +149,18 @@ namespace ConsoleVeiling
                 Console.WriteLine($"{prijs + 1}. {mijnKoper.BodItem[prijs].Naam}");
             }
             Console.WriteLine();
+        }
+
+        static void ToonItems(Item NewItem)
+        {
+            if (NewItem.Verkocht)
+            {
+                Console.WriteLine($"Het item: *{NewItem.Naam}* werd gewonnen door: {NewItem.EersteKoper.mijnNaam} voor {NewItem.AllBod[NewItem.AllBod.Count - 1].Bedrag} euro.");
+            }
+            else
+            {
+                Console.WriteLine($"Het item: *{NewItem.Naam}* heeft geen koper.");
+            }
         }
     }
 }
