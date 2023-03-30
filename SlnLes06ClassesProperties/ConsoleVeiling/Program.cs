@@ -138,7 +138,7 @@ namespace ConsoleVeiling
         {
             if (NewItem.Verkocht)
             {
-                Console.WriteLine($"Het item: -{NewItem.Naam}- werd gewonnen door: {NewItem.EersteKoper.mijnNaam} voor {NewItem.AllBod[NewItem.AllBod.Count - 1].Bedrag} euro.");
+                Console.WriteLine($"Het item: *{NewItem.Naam}* werd gewonnen door: {NewItem.EersteKoper.mijnNaam} voor {NewItem.AllBod[NewItem.AllBod.Count - 1].Bedrag} euro.");
             }
             else
             {
