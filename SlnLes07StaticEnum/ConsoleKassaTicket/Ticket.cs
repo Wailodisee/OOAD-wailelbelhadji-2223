@@ -23,6 +23,10 @@ namespace ConsoleKassaTicket
                 {
                     totaal += product.Prijs;
                 }
+                if (Betaalwijze == Betaalwijze.Visa) // Voeg kosten toe voor Visa
+                {
+                    totaal += 0.12m;
+                }
                 return totaal;
             }
         }
@@ -53,7 +57,10 @@ namespace ConsoleKassaTicket
                 Console.WriteLine($"{product.Naam}{product.Prijs}");
             }
             Console.WriteLine("--------------");
-            Console.WriteLine($"Visa Kosten: 0,12");
+            if (Betaalwijze == Betaalwijze.Visa)
+            {
+                Console.WriteLine($"Visa Kosten: 0,12");
+            }
             Console.WriteLine($"Totaal: {TotaalPrijs}");
         }
 
