@@ -9,49 +9,61 @@ namespace ConsoleKassaTicket
 {
     internal class Ticket
     {
-        public List<Product> Producten { get; private set; }
-        public Betaalwijze BetaaldMet { get; set; }
-        public string Kassier { get; set; }
-        public decimal Totaalprijs => BerekenTotaalprijs();
+        public Product[] Producten { get; set; }
+        public Betaalwijze Betaalwijze { get; set; }
+        public string KassierNaam { get; set; }
 
-        public Ticket(string kassier, Betaalwijze betaaldMet = Betaalwijze.Cash)
+        // Totaalprijs als eigenschap
+        public decimal TotaalPrijs
         {
-            Kassier = kassier;
-            BetaaldMet = betaaldMet;
-            Producten = new List<Product>();
+            get
+            {
+                decimal totaal = 0;
+                foreach (var product in Producten)
+                {
+                    totaal += product.Prijs;
+                }
+                return totaal;
+            }
         }
 
-        public void VoegProductToe(Product product)
+        // Constructor
+        public Ticket(Product[] producten, Betaalwijze betaalwijze, string kassierNaam)
         {
-            Producten.Add(product);
+            Producten = producten;
+            Betaalwijze = betaalwijze;
+            KassierNaam = kassierNaam;
         }
 
+        public Ticket(Product[] producten, Betaalwijze betaalwijze)
+        {
+            Producten = producten;
+            Betaalwijze = betaalwijze;
+        }
+
+        // Methode om ticket af te drukken
         public void DrukTicket()
         {
-            Console.WriteLine("**************** TICKET DELHAIZE ****************");
-            Console.WriteLine($"Naam Kassier: {Kassier}");
-            Console.WriteLine($"Betaald met: {BetaaldMet}");
-            Console.WriteLine("Gekocht producten:");
+            Console.WriteLine("KASSATICKET");
+            Console.WriteLine("===========");
+            Console.WriteLine($"Uw kassier: {KassierNaam}");
+            Console.WriteLine("");
             foreach (var product in Producten)
             {
-                Console.WriteLine(product.errorString());
+                Console.WriteLine($"{product.Naam}{product.Prijs}");
             }
-            Console.WriteLine($"Totaalprijs: {Totaalprijs:C}");
-            if (BetaaldMet == Betaalwijze.Visa)
-            {
-                Console.WriteLine("Kosten: €0,12");
-            }
-            Console.WriteLine("*******************************************");
+            Console.WriteLine("--------------");
+            Console.WriteLine($"Visa Kosten: 0,12");
+            Console.WriteLine($"Totaal: {TotaalPrijs}");
         }
 
-        private decimal BerekenTotaalprijs()
+        // Methode om product te verwijderen
+        public void VerwijderProduct(Product product)
         {
-            decimal totaal = Producten.Sum(product => product.Eenheidsprijs);
-            if (BetaaldMet == Betaalwijze.Visa)
-            {
-                totaal += 0.12m;
-            }
-            return totaal;
+            List<Product> productList = Producten.ToList();
+            productList.Remove(product);
+            Producten = productList.ToArray();
         }
     }
+
 }

@@ -1,23 +1,25 @@
-﻿namespace ConsoleKassaTicket
+﻿using System;
+
+namespace ConsoleKassaTicket
 {
-    internal class Product
+
+    class Product
     {
         public string Naam { get; set; }
-        public decimal Eenheidsprijs { get; set; }
-        public string Code { get; set; }
-
-        public static bool ValideerCode(string code)
+        public decimal Prijs { get; set; }
+        
+        // Constructor
+        public Product(string naam, decimal prijs)
         {
-            if (code.Length != 6 || !code.StartsWith("P"))
-            {
-                return false;
-            }
-            return int.TryParse(code.Substring(1), out _);
-        }
-
-        public string errorString()
-        {
-            return $"({Code}) {Naam} {Eenheidsprijs:C}";
+            Naam = naam;
+            Prijs = prijs;
         }
     }
+
+    // Enumeratie voor betaalwijzen
+    enum Betaalwijze
+    {
+        Visa, Cash, Bancontact 
+    }
+
 }
