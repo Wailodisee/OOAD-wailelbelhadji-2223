@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfEscapeGame"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="541" Width="828">
     <Grid>
         <TextBlock x:Name="txtRoomDesc" Padding="10,10,10,10" HorizontalAlignment="Left" Height="63" Margin="24,10,0,0"
 TextWrapping="Wrap" VerticalAlignment="Top" Width="743" FontSize="16" Background="#FFF9F5F5"/>
@@ -20,12 +20,25 @@ VerticalAlignment="Top" Width="161" IsEnabled="False" Click="btnPickUp_Click"/>
 VerticalAlignment="Top" Width="161" IsEnabled="False" Click="btnUseOn_Click"/>
         <Button x:Name="btnDrop" Content="&lt;&lt; DROP" HorizontalAlignment="Left" Height="35" Margin="313,295,0,0"
 VerticalAlignment="Top" Width="161" IsEnabled="False" Click="btnDrop_Click" />
+
+        <!--TOEGEVOEGD DOOR MIJ-->
+
+        <Button x:Name="btnOpenwith" Content="&lt;- OPEN WITH -&gt;" HorizontalAlignment="Left" Height="35" Margin="313,375,0,0"
+VerticalAlignment="Top" Width="161" IsEnabled="False" Click="btnOpenwith_Click" />
+        <Button x:Name="btnEnter" Content="&lt;- ENTER" HorizontalAlignment="Left" Height="35" Margin="313,415,0,0"
+VerticalAlignment="Top" Width="161" IsEnabled="False" Click="btnEnter_Click" />
+        <Label Content="Room doors" HorizontalAlignment="Left" Height="25" Margin="25,215,0,0" Width="90"/>
+        <ListBox x:Name="lstRoomDoors" HorizontalAlignment="Left" Height="75" Margin="24,380,0,0" VerticalAlignment="Top"
+Width="234" SelectionChanged="lstRoomItems_SelectionChanged"/>
+
+
         <ListBox x:Name="lstRoomItems" HorizontalAlignment="Left" Height="155" Margin="24,176,0,0" VerticalAlignment="Top"
 Width="234" SelectionChanged="lstRoomItems_SelectionChanged"/>
         <Label Content="Picked up items" HorizontalAlignment="Left" Height="26" Margin="528,150,0,0" VerticalAlignment="Top"
 Width="112"/>
         <ListBox x:Name="lstMyItems" HorizontalAlignment="Left" Height="155" Margin="528,176,0,0" VerticalAlignment="Top"
 Width="239" SelectionChanged="lstMyItems_SelectionChanged"/>
+        <Image x:Name="imgRoom" Source="img/ss-bedroom.png" Height="141" Margin="511,358,44,0" VerticalAlignment="Top"/>
     </Grid>
 
 </Window>

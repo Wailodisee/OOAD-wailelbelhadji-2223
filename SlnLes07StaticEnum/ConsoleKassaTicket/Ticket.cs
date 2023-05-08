@@ -21,7 +21,7 @@ namespace ConsoleKassaTicket
                 decimal totaal = 0;
                 foreach (var product in Producten)
                 {
-                    totaal += product.Prijs;
+                    totaal += product.EenheidsPrijs;
                 }
                 if (Betaalwijze == Betaalwijze.Visa) // Voeg kosten toe voor Visa
                 {
@@ -54,7 +54,7 @@ namespace ConsoleKassaTicket
             Console.WriteLine("");
             foreach (var product in Producten)
             {
-                Console.WriteLine($"{product.Naam}{product.Prijs}");
+                Console.WriteLine($"{product.Naam}{product.EenheidsPrijs}");
             }
             Console.WriteLine("--------------");
             if (Betaalwijze == Betaalwijze.Visa)

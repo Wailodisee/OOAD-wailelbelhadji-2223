@@ -1,19 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
-using System.Windows.Data;
 using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Media.Media3D;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace WpfEscapeGame
 {
@@ -29,6 +16,7 @@ namespace WpfEscapeGame
 
             // define room
             Room room1 = new Room("bedroom", "I seem to be in a medium sized bedroom. There is a locker to the left, a nice rug on the floor, and a bed to the right. ");
+
             // define items
             Item key1 = new Item("small silver key", "A small silver key, makes me think of one I at highschool. ", true);
             Item key2 = new Item("large key", "A large key. Could this be my way out? ", true);
@@ -40,25 +28,68 @@ namespace WpfEscapeGame
             locker.Key = key1;
             Item bed = new Item("bed", "Just a bed. I am not tired right now. ", false);
             bed.HiddenItem = key1;
+
             // setup bedroom
             room1.Items.Add(new Item("floor mat", "A bit ragged floor mat, but still one of the most popular designs. "));
             room1.Items.Add(bed);
             room1.Items.Add(locker);
             room1.Items.Add(Chair);
             room1.Items.Add(Poster);
+
             // start game
             currentRoom = room1;
             lblMessage.Content = "I am awake, but cannot remember who I am!? Must have been a hell of a party last night... ";
             txtRoomDesc.Text = currentRoom.Description;
             UpdateUI();
 
+            // define room listbox with a room 
+            lstRoomDoors.Items.Add("green door");
+
+            // Define Living Room
+            Room livingRoom = new Room("living room", "A cozy living room with a couch, a TV, and a bookshelf.");
+            Item couch = new Item("couch", "A comfortable couch to relax on.", false);
+            Item tv = new Item("TV", "A large flat-screen TV.", false);
+            Item bookshelf = new Item("bookshelf", "A wooden bookshelf filled with various books.", false);
+            livingRoom.Items.Add(couch);
+            livingRoom.Items.Add(tv);
+            livingRoom.Items.Add(bookshelf);
+
+            // Define Computer Room
+            Room computerRoom = new Room("computer room", "A small room with a computer desk, a chair, and some shelves.");
+            Item computer = new Item("computer", "A powerful desktop computer.", false);
+            Item desk = new Item("desk", "A simple computer desk.", false);
+            Item officeChair = new Item("office chair", "A comfortable office chair.", false);
+            computerRoom.Items.Add(computer);
+            computerRoom.Items.Add(desk);
+            computerRoom.Items.Add(officeChair);
+
+            // Define Doors
+            Door door1 = new Door("green door", "A locked green door leading to the living room.", livingRoom, false, key2);
+            Door door2 = new Door("white door", "An open white door connecting the living room and computer room.", computerRoom, true, null);
+            Door door3 = new Door("blue door", "An open blue door connecting the computer room and living room.", livingRoom, true, null);
+            Door door4 = new Door("red door", "A locked red door with no known destination.", null, false, null);
+
+            // Add doors to the current room (bedroom)
+            room1.Items.Add(door1);
+            livingRoom.Items.Add(door2);
+            livingRoom.Items.Add(door4);
+            computerRoom.Items.Add(door3);
+
         }
         private void UpdateUI()
         {
             lstRoomItems.Items.Clear();
+            lstRoomDoors.Items.Clear();
             foreach (Item itm in currentRoom.Items)
             {
-                lstRoomItems.Items.Add(itm);
+                if (itm is Door)
+                {
+                    lstRoomDoors.Items.Add(itm);
+                }
+                else
+                {
+                    lstRoomItems.Items.Add(itm);
+                }
             }
         }
 
@@ -156,6 +187,55 @@ namespace WpfEscapeGame
                 lstMyItems.Items.Remove(DropItem);
                 lstRoomItems.Items.Add(SelectedItem);
             }
+        }
+
+        private void btnOpenwith_Click(object sender, RoutedEventArgs e)
+        {
+            Item selectedItem = (Item)lstRoomItems.SelectedItem;
+            if (selectedItem == null)
+            {
+                MessageBox.Show("Select an item from your inventory to use.");
+                return;
+            }
+
+            if (selectedItem.Key == null)
+            {
+                MessageBox.Show($"{selectedItem.Name} cannot be used to open anything.");
+                return;
+            }
+
+            Item selectedDoor = (Item)lstRoomDoors.SelectedItem;
+            if (selectedDoor == null)
+            {
+                MessageBox.Show("Select a door to open.");
+                return;
+            }
+
+            if (!selectedDoor.GetType().Equals(typeof(Door)))
+            {
+                MessageBox.Show("Selected item is not a door.");
+                return;
+            }
+
+            Door door = (Door)selectedDoor;
+            door.Open(selectedItem.Key);
+            UpdateUI();
+
+        }
+
+        private void btnEnter_Click(object sender, RoutedEventArgs e)
+        {
+            // Krijg de geselecteerde deur
+            Door selectedDoor = (Door)lstRoomDoors.SelectedItem;
+
+            // Als de deur niet open is, stop de methode
+            if (selectedDoor == null || !selectedDoor.IsOpen)
+            {
+                return;
+            }
+            // Ga naar de nieuwe kamer
+            currentRoom = selectedDoor.DestinationRoom;
+            UpdateUI();
         }
     }
 }

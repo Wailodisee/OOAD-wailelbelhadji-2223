@@ -6,13 +6,13 @@ namespace ConsoleKassaTicket
     class Product
     {
         public string Naam { get; set; }
-        public decimal Prijs { get; set; }
+        public decimal EenheidsPrijs { get; set; }
         
         // Constructor
         public Product(string naam, decimal prijs)
         {
             Naam = naam;
-            Prijs = prijs;
+            EenheidsPrijs = prijs;
         }
         public static bool ValideerCode(string code)
         {
@@ -42,7 +42,7 @@ namespace ConsoleKassaTicket
         }
         public override string ToString()
         {
-          return $"{Naam} {Prijs.ToString("F2")}";
+          return $"{Naam} {EenheidsPrijs.ToString("F2")}";
         }
     }
 
