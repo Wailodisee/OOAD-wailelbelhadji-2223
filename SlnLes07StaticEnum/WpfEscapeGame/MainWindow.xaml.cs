@@ -46,19 +46,19 @@ namespace WpfEscapeGame
             lstRoomDoors.Items.Add("green door");
 
             // Define Living Room
-            Room livingRoom = new Room("living room", "A cozy living room with a couch, a TV, and a bookshelf.");
-            Item couch = new Item("couch", "A comfortable couch to relax on.", false);
-            Item tv = new Item("TV", "A large flat-screen TV.", false);
-            Item bookshelf = new Item("bookshelf", "A wooden bookshelf filled with various books.", false);
+            Room livingRoom = new Room("living room", "A cozy living room with a sofa, a plant, and an art board.");
+            Item couch = new Item("Big watch", " big watch that show you in how much time you will die.", false);
+            Item tv = new Item("Plant", "A plant that can help you if you are stuck in this room.", false);
+            Item bookshelf = new Item("furniture for books", "This big furniture can generate for you new items if you need help.", false);
             livingRoom.Items.Add(couch);
             livingRoom.Items.Add(tv);
             livingRoom.Items.Add(bookshelf);
 
             // Define Computer Room
-            Room computerRoom = new Room("computer room", "A small room with a computer desk, a chair, and some shelves.");
-            Item computer = new Item("computer", "A powerful desktop computer.", false);
-            Item desk = new Item("desk", "A simple computer desk.", false);
-            Item officeChair = new Item("office chair", "A comfortable office chair.", false);
+            Room computerRoom = new Room("computer room", "A small room with a computer desk, a chair, and some stuff.");
+            Item computer = new Item("computer", "A powerful desktop computer. you can play with him", false);
+            Item desk = new Item("desk", "A simple computer desk. that you can take to jump from a room to another room.", false);
+            Item officeChair = new Item("office chair", "A chair with wich you can play eventuelly ", false);
             computerRoom.Items.Add(computer);
             computerRoom.Items.Add(desk);
             computerRoom.Items.Add(officeChair);
