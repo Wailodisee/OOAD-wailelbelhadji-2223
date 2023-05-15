@@ -8,13 +8,31 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.editorconfig = .editorconfig
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfGebruiker", "WpfGebruiker\WpfGebruiker.csproj", "{F6CCF1F8-8A69-4DD8-B3CF-18B48F918181}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyClassLibrary", "MyClassLibrary\MyClassLibrary.csproj", "{001FA0CE-0491-4C11-BBA9-BCE0BE2A4930}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F6CCF1F8-8A69-4DD8-B3CF-18B48F918181}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6CCF1F8-8A69-4DD8-B3CF-18B48F918181}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6CCF1F8-8A69-4DD8-B3CF-18B48F918181}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6CCF1F8-8A69-4DD8-B3CF-18B48F918181}.Release|Any CPU.Build.0 = Release|Any CPU
+		{001FA0CE-0491-4C11-BBA9-BCE0BE2A4930}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{001FA0CE-0491-4C11-BBA9-BCE0BE2A4930}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{001FA0CE-0491-4C11-BBA9-BCE0BE2A4930}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{001FA0CE-0491-4C11-BBA9-BCE0BE2A4930}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F6CCF1F8-8A69-4DD8-B3CF-18B48F918181} = {ECCC7889-EB32-4CAF-B586-6B135A469715}
+		{001FA0CE-0491-4C11-BBA9-BCE0BE2A4930} = {ECCC7889-EB32-4CAF-B586-6B135A469715}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {268DBB17-8869-4E75-BCD8-560270148A30}
