@@ -55,6 +55,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="PageOntleningen.xaml.cs">
+      <DependentUpon>PageOntleningen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PageVoertuigen.xaml.cs">
+      <DependentUpon>PageVoertuigen.xaml</DependentUpon>
+    </Compile>
     <Compile Include="User.cs" />
     <Page Include="LoginWindow.xaml">
       <SubType>Designer</SubType>
@@ -75,6 +81,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="PageOntleningen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PageVoertuigen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
