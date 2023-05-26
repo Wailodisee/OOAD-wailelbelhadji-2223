@@ -9,7 +9,7 @@
       Title="PageVoertuigen">
 
     <Grid>
-        <Label Content="Ik zie niets bro " FontSize="18px" Background="Red"></Label>
+        <Label Content="Ik zie niets bro " FontSize="18px"></Label>
         
     </Grid>
 </Page>

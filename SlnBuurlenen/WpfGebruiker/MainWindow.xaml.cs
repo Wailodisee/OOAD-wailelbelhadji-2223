@@ -8,14 +8,19 @@ namespace WpfGebruiker
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        private Gebruiker gebruiker;
+
+        public MainWindow(Gebruiker gebruiker)
         {
             InitializeComponent();
+            this.gebruiker = gebruiker;
+            Main.Content = new PageHome(gebruiker);
         }
 
         public MainWindow(int userId, string voorNaam, string achterNaam)
         {
             InitializeComponent();
+            Main.Content = new PageHome(gebruiker);
         }
 
         private void btnOntleningen_Click(object sender, RoutedEventArgs e)
@@ -30,7 +35,7 @@ namespace WpfGebruiker
 
         private void btnHome_Click(object sender, RoutedEventArgs e)
         {
-            Main.NavigationService.Navigate(null);
+            Main.Content = new PageHome(gebruiker);
         }
     }
 }
