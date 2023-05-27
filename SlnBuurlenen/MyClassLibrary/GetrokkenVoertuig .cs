@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MyClassLibrary
 {
-    internal class GetrokkenVoertuig : Voertuig
+    public class GetrokkenVoertuig : Voertuig
     {
         public int? Gewicht { get; set; }
         public int? Maxbelasting { get; set; }
