@@ -161,6 +161,19 @@ namespace WpfGebruiker
 
             mijnCards.Children.Add(panelForText);
         }
+        
+        // Geeft de merk van de voertuig terug
+        private TextBlock GenerateVehicleMerkTextBlock(Voertuig mijnVoertuig)
+        {
+            return new TextBlock
+            {
+                Text = string.IsNullOrEmpty(mijnVoertuig.Merk) ? " Merk : / " : " Merk : " + mijnVoertuig.Merk,
+
+                FontWeight = FontWeights.Bold,
+
+                FontSize = 14
+            };
+        }
 
 
         // TextPanel wordt aangemakt 
@@ -186,7 +199,7 @@ namespace WpfGebruiker
         {
             return new TextBlock
             {
-                Text = mijnVoertuig.Name,
+                Text = mijnVoertuig.Naam,
 
                 FontSize = 20,
 
@@ -198,18 +211,7 @@ namespace WpfGebruiker
             };
         }
 
-        // Geeft de merk van de voertuig terug
-        private TextBlock GenerateVehicleMerkTextBlock(Voertuig mijnVoertuig)
-        {
-            return new TextBlock
-            {
-                Text = string.IsNullOrEmpty(mijnVoertuig.Merk) ? " Merk : / " : " Merk : " + mijnVoertuig.Merk,
-
-                FontWeight = FontWeights.Bold,
-
-                FontSize = 14
-            };
-        }
+        
 
         // Geeft de model van de voertuig terug
         private TextBlock GenerateVehicleModelTextBlock(Voertuig mijnVoertuig)
@@ -222,28 +224,6 @@ namespace WpfGebruiker
 
                 FontSize = 14
             };
-        }
-
-        // Maak de button info aan 
-        private Button GenerateInfoButton(Voertuig mijnVoertuig)
-        {
-            Image pictureInformation = new Image
-            {
-                Source = new BitmapImage(new Uri("img/logoInfo.jpg", UriKind.Relative)),
-
-                Width = 25,
-            };
-
-            Button button = new Button
-            {
-                Content = pictureInformation,
-                Tag = mijnVoertuig,
-                HorizontalAlignment = HorizontalAlignment.Right,
-                VerticalAlignment = VerticalAlignment.Bottom,
-                Margin = new Thickness(0, 0, 10, 0)
-            };
-            button.Click += InfoButton_Click;
-            return button;
         }
 
         // Filtert voertuiggegevens op basis van de selecties van de checkboxes
@@ -268,8 +248,43 @@ namespace WpfGebruiker
             return voertuigFilters;
         }
 
-        private void InfoButton_Click(object sender, RoutedEventArgs e)
+    // Maak de button info aan 
+        private Button GenerateInfoButton(Voertuig mijnVoertuig)
         {
+            Image pictureInformation = new Image
+            {
+                Source = new BitmapImage(new Uri("img/logoInfo.jpg", UriKind.Relative)),
+
+                Width = 25,
+            };
+
+            Button button = new Button
+            {
+                Content = pictureInformation,
+                Tag = mijnVoertuig,
+                HorizontalAlignment = HorizontalAlignment.Right,
+                VerticalAlignment = VerticalAlignment.Bottom,
+                Margin = new Thickness(0, 0, 10, 0)
+            };
+            button.Click += BtnDetails_Click;
+            return button;
+        }
+        private void BtnDetails_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = (Button)sender;
+            Voertuig voertuig = (Voertuig)button.Tag;
+
+            switch (voertuig.Type)
+            {
+                case 1:
+                    DetailWIndow dtlWindow = new DetailWIndow(voertuig, gebruiker);
+                    dtlWindow.Show();
+                    break;
+                case 2:
+                    DetailWindow1 dtlWindow1 = new DetailWindow1(voertuig, gebruiker);
+                    dtlWindow1.Show();
+                    break;
+            }
         }
     }
 }

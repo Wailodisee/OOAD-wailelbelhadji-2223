@@ -18,9 +18,11 @@ namespace MyClassLibrary
         private static Foto RdrPicture(SqlDataReader rdr)
         {
             return new Foto
-            {
-                Id = Convert.ToInt32(rdr["Id"]),
+            {     
                 Data = (byte[])rdr["Data"],
+
+                Id = Convert.ToInt32(rdr["Id"]),
+
                 VoertuigId = Convert.ToInt32(rdr["Voertuig_id"])
             };
         }

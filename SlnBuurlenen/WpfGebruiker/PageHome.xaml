@@ -22,12 +22,12 @@
 
         <WrapPanel Margin="20,10">
             <Label Grid.Row="1" Content="Type :" FontSize="16"></Label>
-            <CheckBox Grid.Row="1" x:Name="cbxGemotoriseerd" Content="Gemotoriseerd" FontSize="16" Margin="5,7" IsChecked="True" Checked="HandleCheckBoxChange" Unchecked="HandleCheckBoxChange"></CheckBox>
-            <CheckBox Grid.Row="1" x:Name="cbxGetrokken" Content="Getrokken" FontSize="16" Margin="5,7" IsChecked="True" Checked="HandleCheckBoxChange" Unchecked="HandleCheckBoxChange"></CheckBox>
+            <CheckBox Grid.Row="1" x:Name="cbxGemotoriseerd" Content="Gemotoriseerd" Margin="5,7" FontSize="16"  IsChecked="True" Checked="HandleCheckBoxChange" Unchecked="HandleCheckBoxChange"></CheckBox>
+            <CheckBox Grid.Row="1" x:Name="cbxGetrokken" Content="Getrokken" Margin="5,7" FontSize="16" IsChecked="True" Checked="HandleCheckBoxChange" Unchecked="HandleCheckBoxChange"></CheckBox>
         </WrapPanel>
 
         <!-- Scrollviewer maken -->
-        
+
         <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
 
          <!-- Scrollviewer maken -->

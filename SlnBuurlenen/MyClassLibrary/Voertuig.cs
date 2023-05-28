@@ -8,26 +8,13 @@ namespace MyClassLibrary
     public class Voertuig
     {
         public int Id { get; set; }
-        public string Name { get; set; }
+        public string Naam { get; set; }
         public string Beschrijving { get; set; }
         public int Bouwjaar { get; set; }
         public string Merk { get; set; }
         public string Model { get; set; }
         public int Type { get; set; }
-        public Gebruiker Eigenaar_Id { get; set; }
-
-        // Initialiseert een Voertuig-object met behulp van de waarden uit de database 
-        public Voertuig(SqlDataReader rdr)
-        {
-            Id = Convert.ToInt32(rdr["Id"]);
-            Name = Convert.ToString(rdr["Naam"]);
-            Beschrijving = Convert.ToString(rdr["Beschrijving"]);
-            Bouwjaar = Convert.ToInt32(rdr["Bouwjaar"]);
-            Merk = Convert.ToString(rdr["Merk"]);
-            Model = Convert.ToString(rdr["Model"]);
-            Type = Convert.ToInt32(rdr["Type"]);
-            Eigenaar_Id = Gebruiker.GetById(Convert.ToInt32(rdr["Eigenaar_Id"]));
-        }
+        public Gebruiker Eigenaar_id { get; set; }
 
         // Maak een lijst van Voertuig-objecten op basis van de waarde van het kolom "Type" in de database
         public static List<Voertuig> GetAll()
@@ -64,6 +51,26 @@ namespace MyClassLibrary
                 }
             }
             return mijnVoertuigen;
+        } 
+        
+        // Initialiseert een Voertuig-object met behulp van de waarden uit de database 
+        public Voertuig(SqlDataReader rdr)
+        {
+            Id = Convert.ToInt32(rdr["Id"]);
+
+            Naam = Convert.ToString(rdr["Naam"]);
+
+            Beschrijving = Convert.ToString(rdr["Beschrijving"]);
+
+            Bouwjaar = Convert.ToInt32(rdr["Bouwjaar"]);
+
+            Merk = Convert.ToString(rdr["Merk"]);
+
+            Model = Convert.ToString(rdr["Model"]);
+
+            Type = Convert.ToInt32(rdr["Type"]);
+
+            Eigenaar_id = Gebruiker.GetById(Convert.ToInt32(rdr["Eigenaar_Id"]));
         }
     }
 }

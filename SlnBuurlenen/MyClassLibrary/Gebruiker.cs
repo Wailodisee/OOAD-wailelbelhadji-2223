@@ -20,19 +20,6 @@ namespace MyClassLibrary
         public byte[] Profielfoto { get; set; }
         public GeslachtsEnum Geslacht { get; set; }
 
-        // Leest de gegevens van de database + maak een Gebruiker-object
-        public Gebruiker(SqlDataReader rdr)
-        {
-            Id = Convert.ToInt32(rdr["id"]);
-            Voornaam = Convert.ToString(rdr["voornaam"]);
-            Achternaam = Convert.ToString(rdr["achternaam"]);
-            Email = Convert.ToString(rdr["email"]);
-            Paswoord = Convert.ToString(rdr["paswoord"]);
-            Aanmaakdatum = Convert.ToDateTime(rdr["aanmaakdatum"]);
-            Profielfoto = rdr["profielfoto"] as byte[];
-            Geslacht = (GeslachtsEnum)Convert.ToByte(rdr["geslacht"]);
-        }
-
         // Voert een query om een gebruiker te vinden op basis van e-mail en wachtwoord + return een Gebruiker-object
         public static Gebruiker LogConn(string email, string password)
         {
@@ -53,6 +40,26 @@ namespace MyClassLibrary
                     return null;
                 }
             }
+        }
+
+        // Leest de gegevens van de database + maak een Gebruiker-object
+        public Gebruiker(SqlDataReader rdr)
+        {
+            Id = Convert.ToInt32(rdr["id"]);
+            
+            Achternaam = Convert.ToString(rdr["achternaam"]);
+
+            Voornaam = Convert.ToString(rdr["voornaam"]);
+
+            Email = Convert.ToString(rdr["email"]);
+
+            Paswoord = Convert.ToString(rdr["paswoord"]);
+
+            Aanmaakdatum = Convert.ToDateTime(rdr["aanmaakdatum"]);
+
+            Profielfoto = rdr["profielfoto"] as byte[];
+
+            Geslacht = (GeslachtsEnum)Convert.ToByte(rdr["geslacht"]);
         }
 
         // Voert een query om een gebruiker te vinden op basis van ID + return een Gebruiker-object 

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfGebruiker"
         mc:Ignorable="d"
-        Title="WPF MotorVoertuig Info" Height="620" Width="600">
+        Title="WPF MotorVoertuig Info" Height="630" Width="600">
     <Grid>
 
         <!-- Row declareren -->
@@ -13,14 +13,14 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
             <RowDefinition Height="120"/>
-            <RowDefinition Height="50"/>
+            <RowDefinition Height="55"/>
             <RowDefinition Height="50"/>
             <RowDefinition Height="50"/>
             <RowDefinition Height="50"/>
             <RowDefinition Height="50"/>
             <RowDefinition Height="50"/>
             <RowDefinition Height="35"/>
-            <RowDefinition Height="120"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
         <!-- Column declareren -->
@@ -32,43 +32,44 @@
 
         <!-- Image + H1 -->
 
-        <Label x:Name="lblNaam1" Content="Lichte Vrachtwagen" FontWeight="Bold" FontSize="20" Grid.ColumnSpan="2" Margin="0,0,380,0"/>
-        <Image x:Name="img1" Grid.Row="1" Width="150" Margin="25,15,410,20"/>
-        <Image x:Name="img2" Grid.Row="1" Width="150" Margin="220,15,230,20"/>
-        <Image x:Name="img3" Grid.Row="1" Width="150" Margin="400,15,410,20"/>
+        <Label x:Name="lblNaam1" Content="" FontWeight="Bold" FontSize="20" Grid.ColumnSpan="2" Margin="0,0,70,0"/>
+        <Image x:Name="img1" Grid.Row="1" Width="150" />
+        <Image x:Name="img2" Grid.Row="1" Margin="45,0"  Grid.Column="1" Width="150" HorizontalAlignment="Left"/>
+        <Image x:Name="img3" Grid.Row="1" Grid.Column="1" Width="150" Margin="25,0" HorizontalAlignment="Right"/>
         <Label x:Name="lblBeschrijving" Grid.Row="2" Content="dvdvvdsvsvq" FontSize="16" Grid.ColumnSpan="2" Margin="0,0,70,0"/>
 
         <!-- Merk + label -->
 
         <Label Grid.Row="3" Content="Merk :" FontWeight="Bold" FontSize="16" Margin="0,0,80,0"/>
-        <Label x:Name="lblMerk" Grid.Row="3" Content="Peugoet" FontSize="16" Margin="55,0,10,0" Height="50" VerticalAlignment="Bottom"/>
+        <Label x:Name="lblMerk" Grid.Row="3" Content="" FontSize="16" Margin="55,0,10,0" Height="50" VerticalAlignment="Bottom"/>
 
         <!-- Model + label -->
 
         <Label Grid.Row="4" Content="Model :" FontSize="16" FontWeight="Bold" Margin="0,0,90,0"/>
-        <Label x:Name="lblModel" Grid.Row="4" Content="Partner" FontSize="16" Margin="60,0,10,0"/>
+        <Label x:Name="lblModel" Grid.Row="4" Content="" FontSize="16" Margin="60,0,10,0"/>
 
         <!-- Brandstof + label -->
 
         <Label Grid.Row="5" Content="Brandstof :" FontSize="16" FontWeight="Bold" Margin="0,0,90,0"/>
-        <Label x:Name="lblBrandstof" Grid.Row="5" Content="diesel" FontSize="16" Margin="85,0,10,0"/>
+        <Label x:Name="lblBrandstof" Grid.Row="5" Content="" FontSize="16" Margin="85,0,10,0"/>
 
         <!-- Bouwjaar + label -->
 
         <Label Grid.Row="3" Grid.Column="1" Content="Bouwjaar :" FontWeight="Bold" FontSize="16" HorizontalAlignment="Left" Width="100"/>
-        <Label x:Name="lblBouwjaar" Grid.Row="3" Grid.Column="1" Content="2006" FontSize="16" Margin="80,0,0,0"/>
+        <Label x:Name="lblBouwjaar" Grid.Row="3" Grid.Column="1" Content="" FontSize="16" Margin="85,0,0,0"/>
 
         <!-- Transmissie + label -->
 
         <Label Grid.Row="4" Grid.Column="1" Content="Transmissie :" FontSize="16" FontWeight="Bold" HorizontalAlignment="Left" Width="130"/>
-        <Label x:Name="lblTransmissie" Grid.Row="4" Grid.Column="1" Content="manueel" FontSize="16" Margin="95,0,0,0"/>
+        <Label x:Name="lblTransmissie" Grid.Row="4" Grid.Column="1" Content="" FontSize="16" Margin="100,0,0,0"/>
 
         <!-- Eigenaar + label -->
 
         <Label Grid.Row="5" Grid.Column="1" Content="Eigenaar :" FontWeight="Bold" FontSize="16" HorizontalAlignment="Left" Width="130"/>
-        <Label x:Name="lblEigenaar" Grid.Row="5" Grid.Column="1" Content="Diana Wong" FontSize="16" Margin="80,0,0,0"/>
+        <Label x:Name="lblEigenaar" Grid.Row="5" Grid.Column="1" Content=" " FontSize="16" Margin="80,0,0,0"/>
 
         <Label Grid.Row="6" Content="Dit voertuig lenen ?" FontSize="18" FontWeight="Bold"/>
+        <Label x:Name="lblError" Grid.Row="6" Grid.Column="1" HorizontalAlignment="Center" Content="" FontSize="17" FontWeight="DemiBold" Foreground="#FFE50D0D" FontStyle="Italic"/>
 
         <!-- Van + Datepicker -->
 
@@ -85,6 +86,6 @@
         <!-- Text + Button -->
 
         <Button x:Name="btnBevestigen" Grid.Column="1" Grid.Row="9" Content="Bevestigen" HorizontalAlignment="Left" Margin="285,45,0,0"  VerticalAlignment="Top" Height="27" Width="92"/>
-        <TextBox x:Name="txtBericht" Grid.Row="9" Margin="10,0,175,30" TextWrapping="Wrap" Text="TextBox" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="txtBericht" Grid.Row="9" Margin="10,0,175,0" TextWrapping="Wrap" Text="" Grid.ColumnSpan="2"/>
     </Grid>
 </Window>

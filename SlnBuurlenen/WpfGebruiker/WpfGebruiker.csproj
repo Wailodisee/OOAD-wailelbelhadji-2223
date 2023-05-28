@@ -58,6 +58,9 @@
     <Compile Include="DetailWIndow.xaml.cs">
       <DependentUpon>DetailWIndow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DetailWindow1.xaml.cs">
+      <DependentUpon>DetailWindow1.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PageHome.xaml.cs">
       <DependentUpon>PageHome.xaml</DependentUpon>
     </Compile>
@@ -69,6 +72,10 @@
     </Compile>
     <Compile Include="User.cs" />
     <Page Include="DetailWIndow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DetailWindow1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
