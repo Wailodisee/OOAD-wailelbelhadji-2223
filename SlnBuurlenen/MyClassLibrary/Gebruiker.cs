@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.Xml.Linq;
 
 namespace MyClassLibrary
 {
@@ -45,21 +46,18 @@ namespace MyClassLibrary
         // Leest de gegevens van de database + maak een Gebruiker-object
         public Gebruiker(SqlDataReader rdr)
         {
-            Id = Convert.ToInt32(rdr["id"]);
-            
-            Achternaam = Convert.ToString(rdr["achternaam"]);
+            Id = (int)rdr["id"];
 
-            Voornaam = Convert.ToString(rdr["voornaam"]);
+            Achternaam = (string)rdr["achternaam"];
+            Voornaam = (string)rdr["voornaam"];
 
-            Email = Convert.ToString(rdr["email"]);
+            Email = (string)rdr["email"];
+            Paswoord = (string)rdr["paswoord"];
 
-            Paswoord = Convert.ToString(rdr["paswoord"]);
-
-            Aanmaakdatum = Convert.ToDateTime(rdr["aanmaakdatum"]);
+            Aanmaakdatum = (DateTime)rdr["aanmaakdatum"];
 
             Profielfoto = rdr["profielfoto"] as byte[];
-
-            Geslacht = (GeslachtsEnum)Convert.ToByte(rdr["geslacht"]);
+            Geslacht = (GeslachtsEnum)(byte)rdr["geslacht"];
         }
 
         // Voert een query om een gebruiker te vinden op basis van ID + return een Gebruiker-object 

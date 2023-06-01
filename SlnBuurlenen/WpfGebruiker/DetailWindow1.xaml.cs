@@ -21,13 +21,20 @@ namespace WpfGebruiker
     /// </summary>
     public partial class DetailWindow1 : Window
     {
-        public DetailWindow1(Voertuig voertuigs, Gebruiker gebruiker)
+        private Voertuig voertuigen;
+        private Gebruiker gebruikers;
+        public DetailWindow1(Voertuig mijnVoertuig, Gebruiker mijnGebruiker)
         {
             InitializeComponent();
-            InitialiseerLabels(voertuigs);
-            VerwerkVoertuigInfo(voertuigs);
-            ToonEigenaar(voertuigs);
-            LaadAfbeeldingen(voertuigs);
+
+
+            this.voertuigen = mijnVoertuig;
+            this.gebruikers = mijnGebruiker;
+
+            InitialiseerLabels(mijnVoertuig);
+            VerwerkVoertuigInfo(mijnVoertuig);
+            ToonEigenaar(mijnVoertuig);
+            LaadAfbeeldingen(mijnVoertuig);
         }
 
         // Methode die de labels initialiseert met de nodige waarden
@@ -105,6 +112,45 @@ namespace WpfGebruiker
             }
             picture.Freeze();
             return picture;
+        }
+
+        // Ontleining bevestigen 
+        private void btnBevestigen_Click(object sender, RoutedEventArgs e)
+        {
+            if (DatePickerControl())
+            {
+                Ontlening newOntlening = new Ontlening();
+                newOntlening.Vanaf = dtpVan.SelectedDate.Value;
+                newOntlening.Tot = dtpTot.SelectedDate.Value;
+                newOntlening.Bericht = txtBericht.Text;
+                newOntlening.Status = OntleningStatus.InAanvraag;
+                newOntlening.VoertuigId = voertuigen.Id;
+                newOntlening.AanvragerId = gebruikers.Id;
+
+                try
+                {
+                    Ontlening.Insert(newOntlening);
+                    MessageBox.Show("Uw aanvraag is verstuurd =)");
+                    this.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Er is een fout opgetreden bij het verzenden van uw aanvraag: " + ex.Message);
+                }
+            }
+        }
+
+        // Controle van de datepickers
+        private bool DatePickerControl()
+        {
+            DateTime? selectedStartDate = dtpVan.SelectedDate;
+            DateTime? selectedEndDate = dtpTot.SelectedDate;
+
+            bool isValid = selectedStartDate.HasValue && selectedEndDate.HasValue && selectedEndDate > selectedStartDate;
+
+            lblError.Content = isValid ? null : (selectedStartDate.HasValue && selectedEndDate.HasValue) ? "Gekozen periode is incorrect." : "Kies een datum.";
+
+            return isValid;
         }
     }
 }

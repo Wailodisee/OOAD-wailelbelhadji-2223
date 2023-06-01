@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfGebruiker"
         mc:Ignorable="d"
-        Title="WPF Burrlenen" Height="485" Width="860">
+        Title="WPF Buurlenen" Height="485" Width="860">
     <Grid>
         <StackPanel Orientation="Vertical" VerticalAlignment="Top" Margin="15,60,670,0">
             <Button x:Name="btnHome" Content="Home" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="0,10" MinWidth="110" FontSize="16" FontWeight="Bold" Click="btnHome_Click"></Button>
@@ -13,7 +13,10 @@
             <Button x:Name="btnVoertuigen" Content="Voertuigen" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,10" MinWidth="110" FontSize="16" FontWeight="Bold" Click="btnVoertuigen_Click"></Button>
         </StackPanel>
 
-        <Frame x:Name="Main" Margin="130,30,0,0" NavigationUIVisibility="Hidden"></Frame>
-        <Image x:Name="imgNaam" HorizontalAlignment="Left" Height="100" Margin="15,315,0,0" VerticalAlignment="Top" Width="100"/>
+        <Frame x:Name="Main" Margin="130,0,0,0" NavigationUIVisibility="Hidden"></Frame>
+        <Image x:Name="imgNaam" HorizontalAlignment="Left" Height="100" Margin="15,203,0,0" VerticalAlignment="Top" Width="100"/>
+        <Label Content="Welkom !" FontSize="18" FontWeight="Bold" VerticalContentAlignment="Center" Margin="15,304,741,111" Foreground="Black"></Label>
+
+        <Button x:Name="btnUitloggen" Content="Uitloggen" Height="40" Width="100" Background="#FF080808" FontSize="18" Margin="15,10" HorizontalAlignment="Left" VerticalAlignment="Bottom" Foreground="White" Click="btnUitloggen_Click"></Button>
     </Grid>
 </Window>

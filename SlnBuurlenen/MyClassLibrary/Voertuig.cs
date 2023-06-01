@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using System.Data.SqlClient;
 
 namespace MyClassLibrary
@@ -51,8 +52,8 @@ namespace MyClassLibrary
                 }
             }
             return mijnVoertuigen;
-        } 
-        
+        }
+
         // Initialiseert een Voertuig-object met behulp van de waarden uit de database 
         public Voertuig(SqlDataReader rdr)
         {
@@ -71,6 +72,44 @@ namespace MyClassLibrary
             Type = Convert.ToInt32(rdr["Type"]);
 
             Eigenaar_id = Gebruiker.GetById(Convert.ToInt32(rdr["Eigenaar_Id"]));
+        }
+
+        // Haalt een voertuig uit de database + retourneert een specifiek subklasse-object
+        public static Voertuig CatchIdOfVoertuig(int idVoertuig)
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["connStr"].ConnectionString;
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                string query = "SELECT * FROM Voertuig WHERE Id = @id";
+
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.Add("@id", SqlDbType.Int).Value = idVoertuig;
+
+                using (SqlDataReader rdrr = command.ExecuteReader())
+                {
+                    if (rdrr.Read())
+                    {
+                        int typeVoertuig = (int)rdrr["Type"];
+
+                        switch (typeVoertuig)
+                        {
+                            case 1:
+                                return new MotorVoertuig(rdrr);
+
+                            case 2:
+                                return new GetrokkenVoertuig(rdrr);
+
+                            default:
+                                return new Voertuig(rdrr);
+                        }
+                    }
+                }
+            }
+
+            return null;
         }
     }
 }

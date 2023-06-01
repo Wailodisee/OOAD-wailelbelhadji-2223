@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfGebruiker"
         mc:Ignorable="d"
-        Title="WPF Getrokken Voertuig Info" Height="680" Width="600">
+        Title="WPF Getrokken Voertuig Info" Height="700" Width="600">
     <Grid>
 
         <!-- Row declareren -->
@@ -13,7 +13,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
             <RowDefinition Height="120"/>
-            <RowDefinition Height="55"/>
+            <RowDefinition Height="75"/>
             <RowDefinition Height="50"/>
             <RowDefinition Height="50"/>
             <RowDefinition Height="50"/>
@@ -95,7 +95,7 @@
 
         <!-- Text + Button -->
 
-        <Button x:Name="btnBevestigen" Grid.Column="1" Grid.Row="10" Content="Bevestigen" HorizontalAlignment="Left" Margin="292,34,0,0"  VerticalAlignment="Top" Height="27" Width="92"/>
+        <Button x:Name="btnBevestigen" Grid.Column="1" Grid.Row="10" Content="Bevestigen" HorizontalAlignment="Left" Margin="292,34,0,0"  VerticalAlignment="Top" Height="27" Width="92" Click="btnBevestigen_Click"/>
         <TextBox x:Name="txtBericht" Grid.Row="10" Margin="10,0,175,10" TextWrapping="Wrap" Text="" Grid.ColumnSpan="2"/>
 
     </Grid>

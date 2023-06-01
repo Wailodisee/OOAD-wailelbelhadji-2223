@@ -8,8 +8,7 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="PageVoertuigen">
 
-    <Grid>
-        <Label Content="Ik zie niets bro " FontSize="18px"></Label>
-        
+    <Grid Background="White">
+        <Button x:Name="btnToevoegen" Content="☛ Toevoegen" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="155" Margin="35,39,0,0" Click="btnToevoegen_Click"></Button>
     </Grid>
 </Page>

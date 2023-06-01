@@ -35,7 +35,8 @@
 
                         <Label Content="Door mij ontleend :"  FontWeight="Bold" FontSize="18" Margin="10,0,25,10"/>
                         <ListBox x:Name="lbxOntleningen" Grid.Row="1" Margin="0,0,25,10"></ListBox>
-                        <Button x:Name="btnAnnuleren" Grid.Row="1" Grid.Column="1" Content="Annuleren" Margin="25,205,10,35"></Button>
+                        <Button x:Name="btnAnnuleren" Grid.Row="1" Grid.Column="1" Content="Annuleren" Margin="25,205,10,35" Click="btnAnnuleren_Click"></Button>
+                        <Label x:Name="lblErrorOntlening" Margin="275,0,90,5" FontSize="17" Foreground="#FFED1818" FontWeight="Bold" Grid.ColumnSpan="2"/>
                     </Grid>
                 </TabItem>
 
@@ -65,34 +66,34 @@
 
 
                         <Label Grid.ColumnSpan="2" Content="Inkomende aanvragen :" FontWeight="Bold" FontSize="18" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top" Width="310" Height="34" />
-                        <ListBox x:Name="lbxAanvragen" Grid.Row="1" Grid.ColumnSpan="2" Margin="0,0,38,0"></ListBox>
+                        <ListBox x:Name="lbxAanvragen" Grid.Row="1" Grid.ColumnSpan="2" Margin="0,0,38,0" SelectionChanged="lbxAanvragen_SelectionChanged"></ListBox>
 
                         <!-- Button declareren -->
 
-                        <Button x:Name="btnAcceptAanvraag" Grid.Column="2" Grid.Row="1" Content="✓ Accepteren" Margin="0,10,10,75"></Button>
-                        <Button x:Name="btnAfwijzen" Grid.Column="2" Grid.Row="1" Content="X Afwijzen" Margin="0,60,10,25"></Button>
+                        <Button x:Name="btnAcceptAanvraag" Grid.Column="2" Grid.Row="1" Content="✓ Accepteren" Margin="0,10,10,75" Click="btnAcceptAanvraag_Click"></Button>
+                        <Button x:Name="btnAfwijzen" Grid.Column="2" Grid.Row="1" Content="X Afwijzen" Margin="0,60,10,25" Click="btnAfwijzen_Click_1"></Button>
 
                         <Label Grid.Row="2" Grid.ColumnSpan="2" Content="Details van de aanvraag :" FontWeight="Bold" FontSize="18" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top" Width="310" Height="34" />
 
                         <!-- Voertuig declareren -->
-                        
+
                         <Label Grid.Row="3" Content="Voertuig :" FontWeight="Bold"></Label>
-                        <Label x:Name="lblVoertuig" Grid.Row="3" Grid.Column="1" Content="Duick Oldtimer" Margin="0,0,175,0"></Label>
+                        <Label x:Name="lblVoertuig" Grid.Row="3" Grid.Column="1" Margin="0,0,80,0" Grid.ColumnSpan="2"></Label>
 
                         <!-- Periode declareren -->
 
                         <Label Grid.Row="4" Content="Periode :" FontWeight="Bold"></Label>
-                        <Label x:Name="lblPeriodeAanvraag" Grid.Row="4" Grid.Column="1" Content="van 24/03/2023 00:00 tot 26/03/2023 00:00 (3 dagen)" Margin="0,0,85,0"></Label>
+                        <Label x:Name="lblPeriodeAanvraag" Grid.Row="4" Grid.Column="1" Margin="0,0,30,0" Grid.ColumnSpan="2"></Label>
 
                         <!-- Voertuig declareren -->
 
                         <Label Grid.Row="5" Content="Aanvrager :" FontWeight="Bold"></Label>
-                        <Label x:Name="lblAanvrager" Grid.Row="5" Grid.Column="1" Content="Nelly Lihemdi" Margin="0,0,180,30" Grid.RowSpan="2"></Label>
+                        <Label x:Name="lblAanvrager" Grid.Row="5" Grid.Column="1" Margin="0,0,70,2"/>
 
                         <!-- Bericht declareren -->
 
                         <Label Grid.Row="6" Content="Bericht :" FontWeight="Bold"></Label>
-                        <Label x:Name="lblBerichtAanvraag" Grid.Row="6" Grid.Column="1" Content="Graag ......."/>
+                        <Label x:Name="lblBerichtAanvraag" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,0,10,0" />
 
                     </Grid>
                 </TabItem>

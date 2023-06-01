@@ -10,26 +10,24 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Microsoft.Win32;
 
 namespace WpfGebruiker
 {
     /// <summary>
-    /// Interaction logic for PageVoertuigen.xaml
+    /// Interaction logic for WindowToevoegen.xaml
     /// </summary>
-    public partial class PageVoertuigen : Page
+    public partial class WindowToevoegen : Window
     {
-        public PageVoertuigen()
+        public WindowToevoegen()
         {
             InitializeComponent();
         }
-      
-        // Opent window toevoegen
-        private void btnToevoegen_Click(object sender, RoutedEventArgs e)
+
+        private void btnUploaden_Click(object sender, RoutedEventArgs e)
         {
-            WindowToevoegen windowToevoegen = new WindowToevoegen(); 
-            windowToevoegen.Show();
+            OpenFileDialog documenten = new OpenFileDialog();
         }
     }
 }

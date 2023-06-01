@@ -92,5 +92,44 @@ namespace WpfGebruiker
             image.Freeze();
             return image;
         }
+
+        // Ontleining bevestigen 
+        private void btnBevestigen_Click(object sender, RoutedEventArgs e)
+        {
+            if (DatePickerControl())
+            {
+                Ontlening newOntlening = new Ontlening();
+                newOntlening.Vanaf = dtpVan.SelectedDate.Value;
+                newOntlening.Tot = dtpTot.SelectedDate.Value;
+                newOntlening.Bericht = txtBericht.Text;
+                newOntlening.Status = OntleningStatus.InAanvraag;
+                newOntlening.VoertuigId = voertuigen.Id;
+                newOntlening.AanvragerId = gebruikers.Id;
+
+                try
+                {
+                    Ontlening.Insert(newOntlening);
+                    MessageBox.Show("Uw aanvraag is verstuurd =)");
+                    this.Close();
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Er is een fout opgetreden bij het verzenden van uw aanvraag: ");
+                }
+            }
+        }
+
+        // Controle van de datepickers
+        private bool DatePickerControl()
+        {
+            DateTime? selectedStartDate = dtpVan.SelectedDate;
+            DateTime? selectedEndDate = dtpTot.SelectedDate;
+
+            bool isValid = selectedStartDate.HasValue && selectedEndDate.HasValue && selectedEndDate > selectedStartDate;
+
+            lblError.Content = isValid ? null : (selectedStartDate.HasValue && selectedEndDate.HasValue) ? "Gekozen periode is incorrect." : "Kies een datum.";
+
+            return isValid;
+        }
     }
 }

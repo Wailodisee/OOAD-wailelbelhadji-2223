@@ -61,7 +61,7 @@ namespace WpfGebruiker
 
                 picturesbyte.EndInit();
             }
-            picturesbyte.Freeze(); 
+            picturesbyte.Freeze();
             return picturesbyte;
         }
 
@@ -175,7 +175,6 @@ namespace WpfGebruiker
             };
         }
 
-
         // TextPanel wordt aangemakt 
         private StackPanel GeneratePanelForText(Voertuig mijnVoertuig)
         {
@@ -210,8 +209,6 @@ namespace WpfGebruiker
                 Margin = new Thickness(-95, 0, 0, 0)
             };
         }
-
-        
 
         // Geeft de model van de voertuig terug
         private TextBlock GenerateVehicleModelTextBlock(Voertuig mijnVoertuig)

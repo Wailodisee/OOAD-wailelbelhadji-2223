@@ -19,6 +19,7 @@ namespace WpfGebruiker
             txtPassword.Password = "test123";
         }
 
+        // button om in te logen in de MainWindow
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
             string email = txtEmail.Text;
@@ -36,6 +37,8 @@ namespace WpfGebruiker
                 lblError.Content = "E-mail of wachtwoord is onjuist!";
             }
         }
+
+        // PasswordHashing
         public string SHA256Hash(string input)
         {
             using (SHA256 sha256Hash = SHA256.Create())
