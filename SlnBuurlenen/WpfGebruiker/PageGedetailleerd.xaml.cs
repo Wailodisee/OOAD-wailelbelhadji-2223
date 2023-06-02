@@ -100,13 +100,10 @@ namespace WpfGebruiker
             if (CheckingNaamBeschrijving())
             {
               GetCreationVoertuig();
-
-            int newVoertuigId = Voertuig.CreateRecord(mijnVoertuig);
-
-            mijnVoertuig.Id = newVoertuigId;
-
-            UploadImages(mijnVoertuig.Id);
-            MessageBox.Show("Voertuig is toegevoegd.");
+                int newVoertuigId = Voertuig.CreateRecord(mijnVoertuig);
+                mijnVoertuig.Id = newVoertuigId;
+                UploadImages(mijnVoertuig.Id);
+                MessageBox.Show("Voertuig is toegevoegd.");
             }
         }
 
@@ -115,13 +112,13 @@ namespace WpfGebruiker
         {
             if (string.IsNullOrEmpty(txtNaam.Text))
             {
-                lblErrorr.Content = "Naam is verplicht.";
+                lblErrorr.Content = "Naam is verplicht."; // error message maar komt in een messagebox
                 return false;
             }
 
             if (string.IsNullOrEmpty(txtBeschrijving.Text))
             {
-                lblErrorr.Content = "Beschrijving is verplicht.";
+                lblErrorr.Content = "Beschrijving is verplicht."; // error message maar komt in een messagebox
                 return false;
             }
 
