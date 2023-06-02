@@ -1,0 +1,111 @@
+﻿<Page x:Class="WpfGebruiker.PageGemotoriseerd"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfGebruiker"
+      mc:Ignorable="d" 
+      d:DesignHeight="740" d:DesignWidth="670"
+      Title="PageGemotoriseerd">
+    <Grid Background="White">
+        <!-- Row declareren -->
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="85"/>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="55"/>
+            <RowDefinition Height="85"/>
+            <RowDefinition Height="130"/>
+        </Grid.RowDefinitions>
+
+        <!-- Column declareren -->
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="270"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- labels declareren -->
+
+        <Label Content="Voertuig toevoegen" FontSize="20" FontWeight="Bold"></Label>
+        <Label Grid.Row="1" Content="Afbeeldingen :" FontSize="16"></Label>
+
+        <!-- button uploaden  -->
+
+        <Button x:Name="btnUploaden" Content="Uploaden" Grid.Row="2" Margin="15,0,145,10" Click="btnUploaden_Click"/>
+
+        <!-- 1 img + button verwijderen  -->
+
+        <Border BorderBrush="Black" BorderThickness="2" Grid.Row="3" Margin="0,0,130,0">
+            <Image x:Name="img1" />
+        </Border>
+        <Button x:Name="btnVerwijderen1" Grid.Row="3" Content="X" Margin="150,20,0,30" HorizontalAlignment="Left" Width="40" Click="btnVerwijderen1_Click" ></Button>
+
+        <!-- 2 img + button verwijderen  -->
+
+        <Border BorderBrush="Black" BorderThickness="2" Grid.Row="3" Margin="210,0,330,0" Grid.ColumnSpan="2">
+            <Image x:Name="img2" />
+        </Border>
+        <Button x:Name="btnVerwijderen2" Grid.Row="3" Content="X" Margin="85,20,270,30" Grid.Column="1" Click="btnVerwijderen2_Click"></Button>
+
+        <!-- 3 img + button verwijderen  -->
+
+        <Border BorderBrush="Black" BorderThickness="2" Grid.Row="3" Margin="150,0,115,0" Grid.Column="1">
+            <Image x:Name="img3" />
+        </Border>
+        <Button x:Name="btnVerwijderen3" Grid.Row="3" Content="X" Margin="300,20,55,30" Grid.Column="1" Click="btnVerwijderen3_Click"></Button>
+
+        <!-- label naam + textbox -->
+
+        <Label Content="Naam :" Grid.Row="4" FontSize="16" FontWeight="Bold" Margin="0,0,200,0"></Label>
+        <TextBox x:Name="txtNaam" Grid.Row="4" Margin="75,10,370,10" Grid.ColumnSpan="2" ></TextBox>
+
+        <!-- label Beschrijving + textbox -->
+
+        <Label Content="Beschrijving :" Grid.Row="5" FontWeight="Bold" FontSize="16"></Label>
+        <TextBox x:Name="txtBeschrijving" Grid.Row="5" Margin="110,10,230,10" Grid.ColumnSpan="2" ></TextBox>
+
+        <!-- label merk + textbox -->
+
+        <Label Content="Merk :" Grid.Row="6" FontSize="16" FontWeight="Bold" Margin="0,0,200,0"></Label>
+        <TextBox x:Name="txtMerk" Grid.Row="6" Margin="75,10,370,20" Grid.ColumnSpan="2" ></TextBox>
+
+        <!-- label bouwjaar + textbox -->
+
+        <Label Content="Bouwjaar :" Grid.Row="6" Grid.Column="1" Margin="50,0,250,0" FontSize="16" FontWeight="Bold"></Label>
+        <TextBox x:Name="txtBouwjaar" Grid.Row="6" Margin="150,10,150,20" Grid.Column="1" />
+
+        <!-- label model + textbox -->
+
+        <Label Content="Model :" Grid.Row="7" FontSize="16" FontWeight="Bold" Margin="0,0,200,40"></Label>
+        <TextBox x:Name="txtModel" Grid.Row="7" Margin="75,10,370,45" Grid.ColumnSpan="2" ></TextBox>
+
+        <!-- label transmissie + combobox -->
+
+        <Label Content="Transmissie :" Grid.Row="7" Grid.Column="1" FontSize="16" FontWeight="Bold" Margin="50,0,230,40"></Label>
+        <ComboBox x:Name="cbxTransmissie" Grid.Column="1" HorizontalAlignment="Left" Margin="170,10,0,0" Grid.Row="7" VerticalAlignment="Top" Width="130" Height="30">
+            <ComboBoxItem Content="Manueel"/>
+            <ComboBoxItem Content="Automatisch"/>
+        </ComboBox>
+
+        <!-- label brandstof + combobox -->
+
+        <Label Content="Brandstof :" Grid.Row="8" FontSize="16" FontWeight="Bold" Margin="0,0,160,90"></Label>
+        <ComboBox x:Name="cbxBrandstof" HorizontalAlignment="Left" Margin="115,5,0,0" Grid.Row="8" VerticalAlignment="Top" Width="155" Height="35">
+            <ComboBoxItem Content="Benzine"/>
+            <ComboBoxItem Content="Diesel"/>
+            <ComboBoxItem Content="LPG"/>
+        </ComboBox>
+
+        <!-- buttons annuleren + opslaan -->
+
+        <Button x:Name="btnAnnuleren" Content="Annueleren" Grid.Row="8" Grid.Column="1" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="105,0,0,30" Height="35" Width="115" Click="btnAnnuleren_Click"></Button>
+        <Button x:Name="btnOpslaaan" Content="Opslaan" Grid.Row="8" Grid.Column="1" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="235,0,0,30" Height="35" Width="115" Click="btnOpslaaan_Click"></Button>
+
+
+    </Grid>
+</Page>

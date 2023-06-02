@@ -11,35 +11,35 @@ namespace WpfGebruiker
     /// </summary>
     public partial class MainWindow : Window
     {
-        private Gebruiker gebruiker;
+        private Gebruiker mijnGebruiker;
 
-        public MainWindow(Gebruiker gebruiker)
+        public MainWindow(Gebruiker mijnGebruiker)
         {
             InitializeComponent();
-            this.gebruiker = gebruiker;
-            Main.Content = new PageHome(gebruiker);
-            imgNaam.Source = LoadImage(gebruiker.Profielfoto);
+            this.mijnGebruiker = mijnGebruiker;
+            Main.Content = new PageHome(mijnGebruiker);
+            imgNaam.Source = LoadImage(mijnGebruiker.Profielfoto);
         }
 
         public MainWindow(int userId, string voorNaam, string achterNaam)
         {
             InitializeComponent();
-            Main.Content = new PageHome(gebruiker);
+            Main.Content = new PageHome(mijnGebruiker);
         }
 
         private void btnOntleningen_Click(object sender, RoutedEventArgs e)
         {
-            Main.Content = new PageOntleningen(gebruiker);
+            Main.Content = new PageOntleningen(mijnGebruiker);
         }
 
         private void btnVoertuigen_Click(object sender, RoutedEventArgs e)
         {
-            Main.Content = new PageVoertuigen();
+            Main.Content = new PageVoertuigen(mijnGebruiker);
         }
 
         private void btnHome_Click(object sender, RoutedEventArgs e)
         {
-            Main.Content = new PageHome(gebruiker);
+            Main.Content = new PageHome(mijnGebruiker);
         }
 
         // Methode om fotoprofiel te lezen

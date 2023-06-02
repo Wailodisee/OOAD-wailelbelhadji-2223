@@ -26,19 +26,22 @@ namespace WpfGebruiker
             string password = txtPassword.Password;
 
             Gebruiker gebruikerLogin = Gebruiker.LogConn(email, SHA256Hash(password));
-            if (gebruikerLogin != null)
+
+            switch (gebruikerLogin)
             {
-                MainWindow mainWindow = new MainWindow(gebruikerLogin);
-                mainWindow.Show();
-                this.Close();
-            }
-            else
-            {
-                lblError.Content = "E-mail of wachtwoord is onjuist!";
+                case Gebruiker user when user != null:
+                    MainWindow mainWindow = new MainWindow(gebruikerLogin);
+                    mainWindow.Show();
+                    this.Close();
+                    break;
+
+                default:
+                    lblError.Content = "E-mail of wachtwoord is onjuist!";
+                    break;
             }
         }
 
-        // PasswordHashing
+        // PasswordHashing chatGPT
         public string SHA256Hash(string input)
         {
             using (SHA256 sha256Hash = SHA256.Create())

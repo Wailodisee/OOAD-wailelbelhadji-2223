@@ -14,6 +14,10 @@ namespace MyClassLibrary
         public string Afmeting { get; set; }
         public bool? Geremd { get; set; }
 
+        public GetrokkenVoertuig()
+        {
+        }
+
         // Initialiseert een object van de GetrokkenVoertuig-klasse + NULL-waarden worden gecontroleerd
         public GetrokkenVoertuig(SqlDataReader rdr)
                                 : base(rdr)

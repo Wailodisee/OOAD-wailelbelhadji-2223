@@ -20,7 +20,7 @@
 
         <!-- WrapPanel checkboxes -->
 
-        <WrapPanel Margin="20,10">
+        <WrapPanel Margin="20,5">
             <Label Grid.Row="1" Content="Type :" FontSize="16"></Label>
             <CheckBox Grid.Row="1" x:Name="cbxGemotoriseerd" Content="Gemotoriseerd" Margin="5,7" FontSize="16"  IsChecked="True" Checked="HandleCheckBoxChange" Unchecked="HandleCheckBoxChange"></CheckBox>
             <CheckBox Grid.Row="1" x:Name="cbxGetrokken" Content="Getrokken" Margin="5,7" FontSize="16" IsChecked="True" Checked="HandleCheckBoxChange" Unchecked="HandleCheckBoxChange"></CheckBox>

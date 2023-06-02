@@ -34,7 +34,7 @@
                         </Grid.ColumnDefinitions>
 
                         <Label Content="Door mij ontleend :"  FontWeight="Bold" FontSize="18" Margin="10,0,25,10"/>
-                        <ListBox x:Name="lbxOntleningen" Grid.Row="1" Margin="0,0,25,10"></ListBox>
+                        <ListBox x:Name="lbxOntleningen" Grid.Row="1" Margin="0,0,25,10" SelectionChanged="lbxOntleningen_SelectionChanged"></ListBox>
                         <Button x:Name="btnAnnuleren" Grid.Row="1" Grid.Column="1" Content="Annuleren" Margin="25,205,10,35" Click="btnAnnuleren_Click"></Button>
                         <Label x:Name="lblErrorOntlening" Margin="275,0,90,5" FontSize="17" Foreground="#FFED1818" FontWeight="Bold" Grid.ColumnSpan="2"/>
                     </Grid>

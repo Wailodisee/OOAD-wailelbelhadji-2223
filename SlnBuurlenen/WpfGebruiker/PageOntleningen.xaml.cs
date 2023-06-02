@@ -21,26 +21,27 @@ namespace WpfGebruiker
     /// </summary>
     public partial class PageOntleningen : Page
     {
-        private List<Ontlening> lijstVanOntleningen = new List<Ontlening>();
-
-        private List<Gebruiker> lijstVanGebruikers = new List<Gebruiker>();
-
-        private Gebruiker gebruiker;
+       
+        private Gebruiker mijnGebruiker;
         public PageOntleningen(Gebruiker mijnGebruiker)
         {
             InitializeComponent();
 
-            this.gebruiker = mijnGebruiker;
+            this.mijnGebruiker = mijnGebruiker;
 
-            LoadAanvragen();
+            GetmyAanvragen();
 
-            LoadOntleningen();  
+            GetmyOntleningen();  
         }
 
+        private List<Ontlening> lijstVanOntleningen = new List<Ontlening>();
+
+        private List<Gebruiker> lijstVanGebruikers = new List<Gebruiker>();
+
         // Haalt de lijst van Aanvragen + vult de ListBox met elke aanvraag
-        private void LoadAanvragen()
+        private void GetmyAanvragen()
         {
-            elkAanvrag = CatchUserOntlening(gebruiker.Id);
+            elkAanvrag = CatchUserOntlening(mijnGebruiker.Id);
 
             lbxAanvragen.Items.Clear();
             for (int i = 0; i < elkAanvrag.Count; i++)
@@ -53,9 +54,9 @@ namespace WpfGebruiker
         }
 
         // Haalt alle  ontleningen + sorteert ze in het orde + vult de ListBox met voertuignaam en de periode van de ontlening
-        private void LoadOntleningen()
+        private void GetmyOntleningen()
         {
-            lijstVanOntleningen = Ontlening.GetAll(gebruiker.Id).OrderByDescending(o => o.Vanaf).ToList();
+            lijstVanOntleningen = Ontlening.GetAll(mijnGebruiker.Id).OrderByDescending(o => o.Vanaf).ToList();
 
             lbxOntleningen.Items.Clear();
             for (int i = 0; i < lijstVanOntleningen.Count; i++)
@@ -96,7 +97,8 @@ namespace WpfGebruiker
             if (geselecteerdONT != null)
             {
                 DeleteOntlening(geselecteerdONT);
-                LoadOntleningen();
+                Ontlening.Delete(geselecteerdONT.Id); // verwijder uit de database
+                GetmyOntleningen();
             }
         }
 
@@ -125,7 +127,7 @@ namespace WpfGebruiker
                     if (geselecteerdONT != null)
                     {
                         ApproveOntlening(geselecteerdONT);
-                        LoadAanvragen();
+                        GetmyAanvragen();
                     }
                 }
             }
@@ -148,7 +150,8 @@ namespace WpfGebruiker
                     if (geselecteerdONT != null)
                     {
                         RejectOntlening(geselecteerdONT);
-                        LoadAanvragen();
+                        Ontlening.Delete(geselecteerdONT.Id); // verwijder uit de database
+                        GetmyAanvragen();
                     }
                 }
             }
@@ -159,20 +162,45 @@ namespace WpfGebruiker
             Ontlening.Update(mijnOntlening);
         }
 
-        // Roept elke methode om de textboxen in te vullen
+        // Roept elke methode om de textboxen in te vullen + disabled de buttons als oude datum
         private void lbxAanvragen_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Ontlening selectedOntlening = CatchSelectedOntleningFromAanvragen();
+            Ontlening geselecteerdONT = CatchSelectedAanvragen();
 
-            if (selectedOntlening != null)
+            if (geselecteerdONT != null)
             {
-                SetVoertuigContent(selectedOntlening);
-                SetPeriodeAanvraagContent(selectedOntlening);
-                SetAanvragerContent(selectedOntlening);
-                SetBerichtAanvraagContent(selectedOntlening);
+                btnAcceptAanvraag.IsEnabled = geselecteerdONT.Vanaf > DateTime.Now;
+                btnAfwijzen.IsEnabled = geselecteerdONT.Vanaf > DateTime.Now;
+
+                SetVoertuigContent(geselecteerdONT);
+                SetPeriodeAanvraagContent(geselecteerdONT);
+                SetAanvragerContent(geselecteerdONT);
+                SetBerichtAanvraagContent(geselecteerdONT);
+            }
+            else
+            {
+                btnAcceptAanvraag.IsEnabled = false;
+                btnAfwijzen.IsEnabled = false;
             }
         }
-        private Ontlening CatchSelectedOntleningFromAanvragen()
+
+        // Annuleer wordt gedisabled 
+        private void lbxOntleningen_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Ontlening geselecteerdONT = CatchSelectedOntlening();
+
+            if (geselecteerdONT != null)
+            {
+                btnAnnuleren.IsEnabled = geselecteerdONT.Vanaf > DateTime.Now;
+            }
+            else
+            {
+                btnAnnuleren.IsEnabled = false;
+            }
+        }
+
+        // Selecteer de correcte aanvraag
+        private Ontlening CatchSelectedAanvragen()
         {
             if (lbxAanvragen.SelectedItem != null && !string.IsNullOrEmpty(lbxAanvragen.SelectedItem.ToString()))
             {

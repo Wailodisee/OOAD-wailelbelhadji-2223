@@ -21,31 +21,31 @@ namespace WpfGebruiker
     /// </summary>
     public partial class DetailWIndow : Window
     {
-        private Voertuig voertuigen;
-        private Gebruiker gebruikers;
+        private Voertuig mijnVoertuig;
+        private Gebruiker mijnGebruiker;
 
         public DetailWIndow(Voertuig mijnVoertuig, Gebruiker mijnGebruiker)
         {
             InitializeComponent();
 
-            this.voertuigen = mijnVoertuig;
-            this.gebruikers = mijnGebruiker;
+            this.mijnVoertuig = mijnVoertuig;
+            this.mijnGebruiker = mijnGebruiker;
 
             InitialiseerLabels();
             ToonEigenaar();
-            LoadImages();
+            LaadAfbeeldingen();
         }
 
         // Methode die de labels initialiseert met de nodige waarden
         private void InitialiseerLabels()
         {
-            lblNaam1.Content = voertuigen.Naam;
-            lblBeschrijving.Content = voertuigen.Beschrijving;
-            lblMerk.Content = voertuigen.Merk;
-            lblModel.Content = voertuigen.Model;
-            lblBouwjaar.Content = voertuigen.Bouwjaar.ToString();
+            lblNaam1.Content = mijnVoertuig.Naam;
+            lblBeschrijving.Content = mijnVoertuig.Beschrijving;
+            lblMerk.Content = mijnVoertuig.Merk;
+            lblModel.Content = mijnVoertuig.Model;
+            lblBouwjaar.Content = mijnVoertuig.Bouwjaar.ToString();
 
-            if (voertuigen is MotorVoertuig motorVoertuig)
+            if (mijnVoertuig is MotorVoertuig motorVoertuig)
             {
                 lblBrandstof.Content = motorVoertuig.Brandstof?.ToString();
                 lblTransmissie.Content = motorVoertuig.Transmissie?.ToString();
@@ -55,7 +55,7 @@ namespace WpfGebruiker
         // Eigenaar van voertuig tonen 
         private void ToonEigenaar()
         {
-            Gebruiker eigenaar = Gebruiker.GetById(voertuigen.Eigenaar_id.Id);
+            Gebruiker eigenaar = Gebruiker.GetById(mijnVoertuig.Eigenaar_id.Id);
             if (eigenaar != null)
             {
                 lblEigenaar.Content = $"{eigenaar.Voornaam} {eigenaar.Achternaam}";
@@ -63,9 +63,9 @@ namespace WpfGebruiker
         }
 
         // Laad afbeelding in elke image-control
-        private void LoadImages()
+        private void LaadAfbeeldingen()
         {
-            List<Foto> fotos = Foto.GetAllAutoPictures(voertuigen.Id);
+            List<Foto> fotos = Foto.GetAllAutoPictures(mijnVoertuig.Id);
             Image[] imageControls = { img1, img2, img3 };
 
             for (int i = 0; i < fotos.Count && i < imageControls.Length; i++)
@@ -98,17 +98,17 @@ namespace WpfGebruiker
         {
             if (DatePickerControl())
             {
-                Ontlening newOntlening = new Ontlening();
-                newOntlening.Vanaf = dtpVan.SelectedDate.Value;
-                newOntlening.Tot = dtpTot.SelectedDate.Value;
-                newOntlening.Bericht = txtBericht.Text;
-                newOntlening.Status = OntleningStatus.InAanvraag;
-                newOntlening.VoertuigId = voertuigen.Id;
-                newOntlening.AanvragerId = gebruikers.Id;
+                Ontlening mijnOntlening = new Ontlening();
+                mijnOntlening.Status = OntleningStatus.InAanvraag;
+                mijnOntlening.Vanaf = dtpVan.SelectedDate.Value;
+                mijnOntlening.Tot = dtpTot.SelectedDate.Value;
+                mijnOntlening.Bericht = txtBericht.Text;
+                mijnOntlening.AanvragerId = mijnGebruiker.Id;
+                mijnOntlening.VoertuigId = mijnVoertuig.Id;  
 
                 try
                 {
-                    Ontlening.Insert(newOntlening);
+                    Ontlening.Insert(mijnOntlening);
                     MessageBox.Show("Uw aanvraag is verstuurd =)");
                     this.Close();
                 }

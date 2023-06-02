@@ -21,6 +21,10 @@ namespace MyClassLibrary
         public byte[] Profielfoto { get; set; }
         public GeslachtsEnum Geslacht { get; set; }
 
+        public Gebruiker()
+        {
+        }
+
         // Voert een query om een gebruiker te vinden op basis van e-mail en wachtwoord + return een Gebruiker-object
         public static Gebruiker LogConn(string email, string password)
         {

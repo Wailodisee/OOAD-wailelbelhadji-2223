@@ -9,6 +9,17 @@
       Title="PageVoertuigen">
 
     <Grid Background="White">
+
+        <!-- btn toevoegen declareren -->
+
         <Button x:Name="btnToevoegen" Content="☛ Toevoegen" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="155" Margin="35,39,0,0" Click="btnToevoegen_Click"></Button>
+
+        <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="40,100,0,0" Grid.Row="2">
+
+            <!-- Scrollviewer maken -->
+
+            <WrapPanel  x:Name="WrapPanelVoertuigen" ></WrapPanel>
+
+        </ScrollViewer>
     </Grid>
 </Page>

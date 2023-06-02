@@ -21,15 +21,14 @@ namespace WpfGebruiker
     /// </summary>
     public partial class DetailWindow1 : Window
     {
-        private Voertuig voertuigen;
-        private Gebruiker gebruikers;
+        private Voertuig mijnVoertuig;
+        private Gebruiker mijnGebruiker;
         public DetailWindow1(Voertuig mijnVoertuig, Gebruiker mijnGebruiker)
         {
             InitializeComponent();
 
-
-            this.voertuigen = mijnVoertuig;
-            this.gebruikers = mijnGebruiker;
+            this.mijnVoertuig = mijnVoertuig;
+            this.mijnGebruiker = mijnGebruiker;
 
             InitialiseerLabels(mijnVoertuig);
             VerwerkVoertuigInfo(mijnVoertuig);
@@ -119,23 +118,23 @@ namespace WpfGebruiker
         {
             if (DatePickerControl())
             {
-                Ontlening newOntlening = new Ontlening();
-                newOntlening.Vanaf = dtpVan.SelectedDate.Value;
-                newOntlening.Tot = dtpTot.SelectedDate.Value;
-                newOntlening.Bericht = txtBericht.Text;
-                newOntlening.Status = OntleningStatus.InAanvraag;
-                newOntlening.VoertuigId = voertuigen.Id;
-                newOntlening.AanvragerId = gebruikers.Id;
+                Ontlening mijnOntlening = new Ontlening();
+                mijnOntlening.Status = OntleningStatus.InAanvraag;
+                mijnOntlening.Vanaf = dtpVan.SelectedDate.Value;
+                mijnOntlening.Tot = dtpTot.SelectedDate.Value;
+                mijnOntlening.Bericht = txtBericht.Text;
+                mijnOntlening.AanvragerId = mijnGebruiker.Id;
+                mijnOntlening.VoertuigId = mijnVoertuig.Id;
 
                 try
                 {
-                    Ontlening.Insert(newOntlening);
+                    Ontlening.Insert(mijnOntlening);
                     MessageBox.Show("Uw aanvraag is verstuurd =)");
                     this.Close();
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    MessageBox.Show("Er is een fout opgetreden bij het verzenden van uw aanvraag: " + ex.Message);
+                    MessageBox.Show("Er is een fout opgetreden bij het verzenden van uw aanvraag: ");
                 }
             }
         }

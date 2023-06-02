@@ -146,6 +146,21 @@ namespace MyClassLibrary
             return mijnOntleningen;
         }
 
+        // Verwijdert records uit de tabel Ontlening in de database
+        public static void DeleteById(int idVoertuig)
+        {
+            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["connStr"].ConnectionString))
+            {
+                connection.Open();
+
+                string query = "DELETE FROM Ontlening WHERE voertuig_Id = @voertuig_Id";
+                SqlCommand command = new SqlCommand(query, connection);
+
+                command.Parameters.AddWithValue("@voertuig_Id", idVoertuig);
+                command.ExecuteNonQuery();
+            }
+        }
+
         // Haalt ontleningen uit de database waarvan de voertuig_id = Id's +  retourneert deze in een lijst van Ontlening-objecten.
         public static List<Ontlening> CatchOntleningenByVoertuigId(int idEigenaar)
         {
@@ -164,5 +179,6 @@ namespace MyClassLibrary
             }
             return mijnOntleningen;
         }
+        
     }
 }

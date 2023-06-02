@@ -23,11 +23,13 @@ namespace WpfGebruiker
     /// </summary>
     public partial class PageHome : Page
     {
-        private Gebruiker gebruiker;
-        public PageHome(Gebruiker gebruiker)
+        private Gebruiker mijnGebruiker;
+        public PageHome(Gebruiker mijnGebruiker)
         {
             InitializeComponent();
-            this.gebruiker = gebruiker;
+
+            this.mijnGebruiker = mijnGebruiker;
+
             FetchDataAuto();
         }
 
@@ -46,7 +48,7 @@ namespace WpfGebruiker
             FetchDataAuto();
         }
 
-        // Converteert byte => ImageSource, wordt gebruikt om een afbeelding weer te geven
+        // Converteert byte => ImageSource, wordt gebruikt om een afbeelding weer te geven -> chatgpt
         private ImageSource BytesToImageSourceConverter(byte[] foto)
         {
             BitmapImage picturesbyte = new BitmapImage();
@@ -234,6 +236,7 @@ namespace WpfGebruiker
             }
 
             List<Voertuig> mijnVoertuigen = Voertuig.GetAll();
+            mijnVoertuigen = mijnVoertuigen.Where(v => v.Eigenaar_id.Id != this.mijnGebruiker.Id).ToList();
 
             foreach (var auto in mijnVoertuigen)
             {
@@ -269,16 +272,16 @@ namespace WpfGebruiker
         private void BtnDetails_Click(object sender, RoutedEventArgs e)
         {
             Button button = (Button)sender;
-            Voertuig voertuig = (Voertuig)button.Tag;
+            Voertuig mijnVoertuig = (Voertuig)button.Tag;
 
-            switch (voertuig.Type)
+            switch (mijnVoertuig.Type)
             {
                 case 1:
-                    DetailWIndow dtlWindow = new DetailWIndow(voertuig, gebruiker);
+                    DetailWIndow dtlWindow = new DetailWIndow(mijnVoertuig, mijnGebruiker);
                     dtlWindow.Show();
                     break;
                 case 2:
-                    DetailWindow1 dtlWindow1 = new DetailWindow1(voertuig, gebruiker);
+                    DetailWindow1 dtlWindow1 = new DetailWindow1(mijnVoertuig, mijnGebruiker);
                     dtlWindow1.Show();
                     break;
             }

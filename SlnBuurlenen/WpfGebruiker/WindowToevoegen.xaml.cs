@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Microsoft.Win32;
+using MyClassLibrary;
 
 namespace WpfGebruiker
 {
@@ -20,14 +21,21 @@ namespace WpfGebruiker
     /// </summary>
     public partial class WindowToevoegen : Window
     {
-        public WindowToevoegen()
+        private Gebruiker mijnGebruiker;
+        public WindowToevoegen(Gebruiker mijnGebruiker)
         {
             InitializeComponent();
+            this.mijnGebruiker = mijnGebruiker;
         }
 
-        private void btnUploaden_Click(object sender, RoutedEventArgs e)
+        private void btnGem_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog documenten = new OpenFileDialog();
+            Mainn.Content = new PageGemotoriseerd(mijnGebruiker);
+        }
+
+        private void btnGet_Click(object sender, RoutedEventArgs e)
+        {
+            Mainn.Content = new PageGedetailleerd(mijnGebruiker);
         }
     }
 }
